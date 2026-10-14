@@ -3085,7 +3085,7 @@ window.TourismComparison.init();
   document.querySelector('.globe-intro')?.remove();
   /* ---- 2. DOM 骨架 ---- */
   const st = document.createElement('div'); st.id = 'stage'; st.setAttribute('aria-label', '旅游数据仓库可视化大屏');
-  const LAYERS = [['spikes', '评论量柱', 1], ['arrivals', '入境游客', 0], ['cities', '城市光点', 1], ['borders', '国界', 1], ['clouds', '云层', 0], ['night', '昼夜', 0], ['arcs', '客源飞线', 1], ['labels', '标签', 1]];
+  const LAYERS = [['spikes', '评论量柱', 1], ['arrivals', '入境游客', 1], ['cities', '城市光点', 1], ['borders', '国界', 1], ['clouds', '云层', 1], ['night', '昼夜', 1], ['arcs', '客源飞线', 1], ['labels', '标签', 1]];
   const DOCK = [['charts', '📊', '图表全集', '16 张分析图'], ['map2d', '🗺️', '2D 地图', '国家下钻'], ['hotels', '🏨', '住宿明细', '检索 · 导出 CSV'], ['timeline', '⏳', '时间轴', '国家/城市'], ['galaxy', '🌌', '情感星系', '词频'],
     ['arch', '🧱', '数仓架构', 'HDFS · Hive · Spark · MySQL'], ['story', '📖', '数据故事', '全球→城市'], ['qa', '💬', '问数据', '自然语言'], ['cards', '🎓', '答辩卡', 'Q&A'], ['tour', '▶', '自动讲解', '演示模式']];
   st.innerHTML = `<canvas class="sg-canvas" tabindex="0" aria-label="3D 地球：拖动旋转，滚轮缩放，点击国家飞入，Shift+点击对比两国，? 查看快捷键"></canvas><div class="sg-labels" aria-hidden="true"></div><div class="sg-vignette"></div><div class="sg-grain" aria-hidden="true"></div>
