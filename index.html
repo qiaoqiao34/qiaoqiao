@@ -979,8 +979,20 @@ body.boot-done #boot .boot-stars{opacity:0;transition:opacity .9s ease .2s}
 #boot .boot-name{font-size:56px}#boot .boot-name small{margin-bottom:18px}
 #boot .boot-tag{font-size:14px;margin-top:18px}#boot .boot-bar{margin-top:34px}#boot .boot-stats{gap:26px;margin-top:30px}#boot .boot-stats b{font-size:19px}#boot .boot-cap{margin-top:22px}}
 @media (prefers-reduced-motion:reduce){#boot{-webkit-mask:none;mask:none;transition:opacity .5s ease,visibility 0s linear .5s}#boot .boot-inner>*,body.boot-done #boot .boot-inner>*{animation:none}#boot .boot-bar i{animation:none;transform:translateX(90%)}#boot .boot-canvas{transition:opacity .6s}}
+
+/* ==== v19 加载屏 → 3D 大屏无缝交接（取消开圆遮罩：机位对齐 + 交叉淡化） ==== */
+#boot{-webkit-mask:none;mask:none;--p:.04;transition:opacity .9s cubic-bezier(.4,0,.2,1),visibility 0s linear .95s}
+body.boot-done #boot{opacity:0;visibility:hidden;pointer-events:none}
+#boot .boot-bar i{width:100%;left:0;transform-origin:0 50%;transform:scaleX(var(--p));animation:none;transition:transform 1.1s cubic-bezier(.22,1,.36,1);background:linear-gradient(90deg,rgba(94,234,212,.25),#5eead4 70%,#f0a6ca)}
+#boot .boot-bar::after{content:'';position:absolute;top:-1px;bottom:-1px;width:60px;left:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);opacity:.55;animation:boot-glint 2.4s cubic-bezier(.65,0,.35,1) infinite;transform:translateX(-60px)}
+@keyframes boot-glint{to{transform:translateX(320px)}}
+body.boot-handoff #boot .boot-inner>*{animation:boot-out .7s cubic-bezier(.4,0,.2,1) both}
+body.boot-handoff #boot .boot-tag{animation-delay:.05s}body.boot-handoff #boot .boot-bar{animation-delay:.1s}body.boot-handoff #boot .boot-text{animation-delay:.12s}body.boot-handoff #boot .boot-stats{animation-delay:.16s}body.boot-handoff #boot .boot-cap{animation-delay:.2s}
+body.boot-handoff #boot .boot-stars{opacity:0;transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
+body.boot-handoff #boot{background:transparent}
+@media (prefers-reduced-motion:reduce){#boot{transition:opacity .4s ease,visibility 0s linear .45s}#boot .boot-bar::after{animation:none;display:none}body.boot-handoff #boot .boot-inner>*{animation:none;opacity:0}}
 </style></head><body>
-<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></symbol><symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="i-visitors" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5"/></symbol><symbol id="i-reviews" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></symbol><symbol id="i-hotels" viewBox="0 0 24 24"><path d="M5 21V3h14v18M3 21h18M10 21v-5h4v5M9 7h1M14 7h1M9 11h1M14 11h1"/></symbol><symbol id="i-methods" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9L12 3Z"/></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10M15 5h6v6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/></symbol></defs></svg><div id="boot" role="status" aria-label="页面加载中"><canvas class="boot-canvas" aria-hidden="true"></canvas><div class="boot-stars" aria-hidden="true"></div><div class="boot-orbit" aria-hidden="true"><i class="o1"></i><i class="o2"></i></div><div class="boot-inner"><div class="boot-globe" aria-hidden="true"><i class="mg"></i><i class="eq"></i></div><div class="boot-name">旅析<small>TOURISM INSIGHTS</small></div><div class="boot-tag">以真实评论，观察旅居体验</div><div class="boot-bar"><i></i></div><div class="boot-text" id="boot-text">正在加载页面…</div><div class="boot-stats"><span><b>144.9万</b>评论</span><span><b>2,670</b>城市</span><span><b>16,174</b>住宿</span></div><div class="boot-cap" aria-hidden="true">Hadoop · Hive · Spark</div></div></div><script>(function(){function h(){var b=document.getElementById("boot");if(!b||b.dataset.done)return;b.dataset.done="1";document.body.classList.add("boot-done");setTimeout(function(){var x=document.getElementById("boot");if(x)x.remove();},1500);}function m(t){var e=document.getElementById("boot-text");if(!e||!t)return;e.classList.add("swap");setTimeout(function(){e.textContent=t;e.classList.remove("swap");},180);}window.addEventListener("load",function(){setTimeout(h,800);});setTimeout(h,15000);window.__hideBoot=h;window.__bootMsg=m;})();</script><a class="skip-link" href="#overview">跳至主要内容</a>
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></symbol><symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="i-visitors" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5"/></symbol><symbol id="i-reviews" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></symbol><symbol id="i-hotels" viewBox="0 0 24 24"><path d="M5 21V3h14v18M3 21h18M10 21v-5h4v5M9 7h1M14 7h1M9 11h1M14 11h1"/></symbol><symbol id="i-methods" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9L12 3Z"/></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10M15 5h6v6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/></symbol></defs></svg><div id="boot" role="status" aria-label="页面加载中"><canvas class="boot-canvas" aria-hidden="true"></canvas><div class="boot-stars" aria-hidden="true"></div><div class="boot-orbit" aria-hidden="true"><i class="o1"></i><i class="o2"></i></div><div class="boot-inner"><div class="boot-globe" aria-hidden="true"><i class="mg"></i><i class="eq"></i></div><div class="boot-name">旅析<small>TOURISM INSIGHTS</small></div><div class="boot-tag">以真实评论，观察旅居体验</div><div class="boot-bar"><i></i></div><div class="boot-text" id="boot-text">正在加载页面…</div><div class="boot-stats"><span><b>144.9万</b>评论</span><span><b>2,670</b>城市</span><span><b>16,174</b>住宿</span></div><div class="boot-cap" aria-hidden="true">Hadoop · Hive · Spark</div></div></div><script>(function(){function h(){var b=document.getElementById("boot");if(!b||b.dataset.done)return;b.dataset.done="1";document.body.classList.add("boot-done");setTimeout(function(){var x=document.getElementById("boot");if(x)x.remove();},1500);}function m(t){var e=document.getElementById("boot-text");if(!e||!t)return;e.classList.add("swap");setTimeout(function(){e.textContent=t;e.classList.remove("swap");},180);}var P={html:.12,tex:.3,js:.42,data:.58,globe:.74,stage:.92,done:1},cur=.04;function pg(k){var v=P[k]||0,b=document.getElementById("boot");if(!b||v<=cur)return;cur=v;b.style.setProperty("--p",v);}window.__bootProgress=pg;pg("html");window.addEventListener("load",function(){setTimeout(function(){if(!window.__bootCtl)h();},800);});setTimeout(h,20000);window.__hideBoot=h;window.__bootMsg=m;})();</script><a class="skip-link" href="#overview">跳至主要内容</a>
 <aside><a class="brand" href="#overview" aria-label="旅析首页"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="brand-name">旅<span>析</span><small>TOURISM INSIGHTS</small></span></a><div class="nav-label">分析导航</div><nav aria-label="分析章节"><a href="#overview" aria-label="数据总览"><svg class="icon" aria-hidden="true"><use href="#i-overview"/></svg><span class="nav-text">数据总览</span><span class="nav-mobile-text">总览</span><span class="nav-index">01</span></a><a href="#visitors" aria-label="游客与出行"><svg class="icon" aria-hidden="true"><use href="#i-visitors"/></svg><span class="nav-text">游客与出行</span><span class="nav-mobile-text">出行</span><span class="nav-index">02</span></a><a href="#reviews" aria-label="评价洞察"><svg class="icon" aria-hidden="true"><use href="#i-reviews"/></svg><span class="nav-text">评价洞察</span><span class="nav-mobile-text">评价</span><span class="nav-index">03</span></a><a href="#hotels" aria-label="酒店探索"><svg class="icon" aria-hidden="true"><use href="#i-hotels"/></svg><span class="nav-text">酒店探索</span><span class="nav-mobile-text">酒店</span><span class="nav-index">04</span></a><a href="#methods" aria-label="数据与方法"><svg class="icon" aria-hidden="true"><use href="#i-methods"/></svg><span class="nav-text">数据与方法</span><span class="nav-mobile-text">方法</span><span class="nav-index">05</span></a></nav><div class="sidefoot"><div class="side-project"><span class="live-dot"></span><strong>个人毕业设计</strong></div><p>大数据方向 · 旅游住宿分析</p><div class="side-line"></div><p>Hadoop / Spark / Python<br>以真实评论，观察旅居体验</p><div class="side-edition">DATA EDITION &nbsp; 2015—2017</div></div></aside>
 <main><div class="topline"><div class="breadcrumbs"><span class="crumb-project">毕业设计</span><span class="crumb-project">/</span><span>旅游数据仓库</span><span>/</span><strong>分析工作台</strong></div><div class="top-actions"><span class="status" id="status" role="status">已验证的数据快照</span><button class="quiet-button" id="present-mode" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-expand"/></svg><span data-label>演示模式</span></button></div></div>
 <header class="hero" id="overview"><div class="hero-copy"><div class="eyebrow">大数据毕业设计 · 个人项目</div><h1><span id="hero-city">欧洲六城</span><br><em>酒店评论分析</em></h1><p id="hero-summary">从历史酒店评论中，比较城市差异与住宿体验。</p><div class="hero-pipeline">HDFS 存储 <span>→</span> Spark 分层计算 <span>→</span> MySQL 展示</div><a class="hero-method-link" href="#methods">查看数据来源与技术实现 ↗</a></div><div class="research-questions" aria-label="研究问题与分析入口"><div class="research-kicker">三个问题，读懂这份数据</div><a href="#city-comparison"><span class="question-number">01</span><span><strong>六座城市，评分差多少？</strong><small>对比城市评分与评论分布</small></span><span class="question-arrow" aria-hidden="true">↗</span></a><a href="#visitors"><span class="question-number">02</span><span><strong>哪些旅客构成了样本？</strong><small>分析出行目的、同行人群与住宿时长</small></span><span class="question-arrow" aria-hidden="true">↗</span></a><a href="#hotels"><span class="question-number">03</span><span><strong>如何找到样本内的高分酒店？</strong><small>筛选、比较并查看酒店详情</small></span><span class="question-arrow" aria-hidden="true">↗</span></a></div></header>
@@ -1029,22 +1041,24 @@ R.setPixelRatio(Math.min(devicePixelRatio,2));R.setClearColor(0x020807,1);
 const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(32,1,.1,200);window.__bootCam=C;
 const L=new THREE.TextureLoader(),base=(document.currentScript&&document.currentScript.src.replace(/boot\.js.*$/,''))||'';
 const tex=n=>{const t=L.load((window.__EARTH_TEX&&__EARTH_TEX[n])||(window.BOOT_TEX&&BOOT_TEX[n])||base+'assets/'+n+'.webp',()=>loaded++);t.anisotropy=8;return t};let loaded=0;
-const sun=new THREE.Vector3(.95,.42,-.05).normalize();
-const earthMat=new THREE.ShaderMaterial({uniforms:{day:{value:tex('day')},night:{value:tex('lights')},clouds:{value:tex('clouds')},sun:{value:sun},t:{value:0}},
+const sun=new THREE.Vector3(.95,.42,-.05).normalize(),sunLocal=new THREE.Vector3(),_q=new THREE.Quaternion();let sunAt=0;
+const llS=(la,lo)=>{la*=Math.PI/180;lo=(lo+180)*Math.PI/180;return new THREE.Vector3(-Math.cos(la)*Math.cos(lo),Math.sin(la),Math.cos(la)*Math.sin(lo))};
+const updSun=()=>{const f=window.subsolarPoint;if(f){const[a,b]=f();sunLocal.copy(llS(a,b))}else sunLocal.set(.95,.42,-.05).normalize()};updSun();
+const earthMat=new THREE.ShaderMaterial({uniforms:{day:{value:tex('day')},night:{value:tex('lights')},clouds:{value:tex('clouds')},sun:{value:sun},t:{value:0},hk:{value:0}},
 vertexShader:`varying vec2 vU;varying vec3 vN;varying vec3 vV;void main(){vU=uv;vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vV=normalize(cameraPosition-w.xyz);gl_Position=projectionMatrix*viewMatrix*w;}`,
-fragmentShader:`uniform sampler2D day,night,clouds;uniform vec3 sun;uniform float t;varying vec2 vU;varying vec3 vN;varying vec3 vV;
+fragmentShader:`uniform sampler2D day,night,clouds;uniform vec3 sun;uniform float t,hk;varying vec2 vU;varying vec3 vN;varying vec3 vV;
 void main(){float d=dot(vN,sun);float k=smoothstep(-.12,.38,d);vec3 dc=texture2D(day,vU).rgb;
 float cl=texture2D(clouds,vU+vec2(t*.004,0.)).r;dc=mix(dc,vec3(.95),cl*.55);
 vec3 nc=texture2D(night,vU).rgb;float lum=max(max(nc.r,nc.g),nc.b);lum=smoothstep(.12,.85,lum);nc=vec3(1.,.78,.45)*pow(lum,1.3)*2.4*(1.-cl*.7);
-dc*=vec3(.92,1.02,.98);dc=pow(dc,vec3(1.12))*.92;vec3 col=mix(nc+vec3(.010,.028,.024)+dc*vec3(.01,.03,.028),dc*(.12+.9*max(d,0.)),k);
+dc=mix(dc*vec3(.92,1.02,.98),dc*vec3(1.02,.99,1.),hk);dc=pow(dc,vec3(mix(1.12,.95,hk)))*mix(.92,1.08,hk);vec3 col=mix(nc+vec3(.010,.028,.024)+dc*vec3(.01,.03,.028),dc*(.12+.9*max(d,0.)),k);
 vec3 h=normalize(sun+vV);float sp=pow(max(dot(vN,h),0.),40.)*(1.-cl)*.35*k;col+=vec3(.7,.95,.9)*sp;
-float f=pow(1.-max(dot(vN,vV),0.),3.);col+=vec3(.3,.9,.8)*f*(.12+.9*k);
+float f=pow(1.-max(dot(vN,vV),0.),3.);col+=mix(vec3(.3,.9,.8),vec3(.62,.55,1.),hk)*f*(.12+.9*k);
 gl_FragColor=vec4(col,1.);}`});
 const earth=new THREE.Mesh(new THREE.SphereGeometry(1,128,96),earthMat);
 const tilt=new THREE.Group();tilt.rotation.z=.41;tilt.rotation.x=.18;tilt.add(earth);S.add(tilt);
-const atm=new THREE.Mesh(new THREE.SphereGeometry(1.045,96,64),new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{sun:{value:sun}},
+const atm=new THREE.Mesh(new THREE.SphereGeometry(1.045,96,64),new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{sun:{value:sun},hk:{value:0}},
 vertexShader:`varying vec3 vN;varying vec3 vP;void main(){vN=normalize(mat3(modelMatrix)*normal);vP=(modelMatrix*vec4(position,1.)).xyz;gl_Position=projectionMatrix*viewMatrix*vec4(vP,1.);}`,
-fragmentShader:`uniform vec3 sun;varying vec3 vN;varying vec3 vP;void main(){vec3 v=normalize(cameraPosition-vP);float i=pow(clamp(.62+dot(vN,v)*1.05,0.,1.),6.);float s=.12+1.1*smoothstep(-.3,.7,dot(-vN,sun));gl_FragColor=vec4(mix(vec3(.25,.95,.8),vec3(.55,.75,1.),.35)*i*s*1.25,1.);}`}));
+fragmentShader:`uniform vec3 sun;uniform float hk;varying vec3 vN;varying vec3 vP;void main(){vec3 v=normalize(cameraPosition-vP);float i=pow(clamp(.62+dot(vN,v)*1.05,0.,1.),6.);float s=.12+1.1*smoothstep(-.3,.7,dot(-vN,sun));gl_FragColor=vec4(mix(mix(vec3(.25,.95,.8),vec3(.55,.75,1.),.35),vec3(.62,.5,1.),hk)*i*mix(s,1.,hk*.6)*(1.25+hk*.5),1.);}`}));
 S.add(atm);
 // stars
 const sky=new THREE.Mesh(new THREE.SphereGeometry(90,48,32),new THREE.MeshBasicMaterial({map:tex('stars'),side:THREE.BackSide,color:0x6f8a84}));S.add(sky);
@@ -1068,16 +1082,28 @@ let cam={d:0,x:0,y:0};function size(){const w=innerWidth,h=innerHeight;R.setSize
 if(w<=640){C.fov=38;cam={d:4.1,x:0,y:1.12}}else{C.fov=28;cam={d:4.6,x:-.78,y:.05}}C.updateProjectionMatrix()}
 size();addEventListener('resize',size);
 let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
-let exitT=null,t0=performance.now(),running=true;
-window.__bootDollyPreview=()=>{exitT=performance.now()};new MutationObserver(()=>{if(document.body.classList.contains('boot-done')&&exitT===null)exitT=performance.now()}).observe(document.body,{attributes:true,attributeFilter:['class']});
-const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+let t0=performance.now(),running=true,hand=null,arcK=1;
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,eio=x=>x<.5?16*x*x*x*x*x:1-Math.pow(-2*x+2,5)/2;
+const qE=new THREE.Quaternion(),M4=new THREE.Matrix4(),O=new THREE.Vector3();
+/* 交接：把加载屏地球的相机平滑飞到与大屏地球完全一致的机位（同经纬、同距离、同 FOV），随后由大屏接管 */
+window.__bootHandoff=(v,ms)=>{if(hand)return;tilt.updateMatrixWorld(true);earth.getWorldQuaternion(qE);
+ const toPos=llS(v.lat,v.lon).multiplyScalar(v.dist).applyQuaternion(qE),up=new THREE.Vector3(0,1,0).applyQuaternion(qE);
+ M4.lookAt(toPos,O,up);const toQ=new THREE.Quaternion().setFromRotationMatrix(M4);
+ hand={t:performance.now(),ms:RM?1:ms,p0:C.position.clone(),q0:C.quaternion.clone(),f0:C.fov,p1:toPos,q1:toQ,f1:v.fov||36,r0:C.position.length(),r1:v.dist}};
 function frame(now){if(!running)return;const t=(now-t0)/1000;
-if(loaded>=3&&!boot.classList.contains('gl-ready'))boot.classList.add('gl-ready');
+if(loaded>=3&&!boot.classList.contains('gl-ready')){boot.classList.add('gl-ready');window.__bootProgress&&__bootProgress('tex')}
 earthMat.uniforms.t.value=t;arcMats.forEach(m=>m.uniforms.t.value=t);
-if(!RM){earth.rotation.y=-2.6+t*.03;stars.rotation.y=t*.004}
-const intro=RM?1:ease(Math.min(t/3.2,1));let d=cam.d+(1-intro)*.9,px=cam.x,py=cam.y;
-if(exitT!==null){const e=RM?1:Math.min((now-exitT)/(1300/(window.__bootTimeScale||1)),1),k=1-Math.pow(1-e,3);d=cam.d+(1.5-cam.d)*k;px=cam.x*(1-k);py=cam.y*(1-k);if(e>=1&&(now-exitT)>1500/(window.__bootTimeScale||1)){running=false;R.dispose();R.forceContextLoss&&R.forceContextLoss();return}}
-C.position.set(px+(RM?0:mx*.06),py-(RM?0:my*.04),d);C.lookAt(px,py,0);
+if(!hand&&!RM){earth.rotation.y=-2.6+t*.03;stars.rotation.y=t*.004}
+if(now-sunAt>5000){sunAt=now;updSun()}tilt.updateMatrixWorld(true);earth.getWorldQuaternion(_q);sun.copy(sunLocal).applyQuaternion(_q);
+if(hand){const u=Math.min(1,(now-hand.t)/hand.ms),k=eio(u);
+ const d0=hand.p0.clone().normalize(),d1=hand.p1.clone().normalize(),qd=new THREE.Quaternion().setFromUnitVectors(d0,d1),qi=new THREE.Quaternion().slerp(qd,k);
+ C.position.copy(d0.applyQuaternion(qi).multiplyScalar(hand.r0+(hand.r1-hand.r0)*k));
+ C.quaternion.copy(hand.q0).slerp(hand.q1,k);C.fov=hand.f0+(hand.f1-hand.f0)*k;C.updateProjectionMatrix();
+ arcK=1-Math.min(1,u*2.2);earthMat.uniforms.hk.value=atm.material.uniforms.hk.value=k;arcMats.forEach(m=>m.visible=arcK>0.01);
+ if(u>=1&&!hand.end){hand.end=now}
+ if(hand.end&&now-hand.end>1400){running=false;R.dispose();R.forceContextLoss&&R.forceContextLoss();return}}
+else{const intro=RM?1:ease(Math.min(t/3.2,1));const d=cam.d+(1-intro)*.9,px=cam.x,py=cam.y;
+C.position.set(px+(RM?0:mx*.06),py-(RM?0:my*.04),d);C.lookAt(px,py,0)}
 R.render(S,C);requestAnimationFrame(frame)}
 requestAnimationFrame(frame);
 })();
@@ -1095,7 +1121,7 @@ window.subsolarPoint = subsolarPoint;
 window.__storyNoSwitch = true;
 /* Dashboard interactions: all calculations use the published warehouse aggregates. */
 let payload = JSON.parse(document.getElementById('project-data').textContent);
-window.__bootMsg && window.__bootMsg('数据解析完成，正在构建图表…');
+window.__bootMsg && window.__bootMsg('数据解析完成，正在构建图表…'); window.__bootProgress && window.__bootProgress('data');
 let city = '全球', page = 1;
 const pageSize = 20;
 const $ = id => document.getElementById(id);
@@ -3162,7 +3188,7 @@ window.TourismComparison.init();
   tagCharts(); window.addEventListener('dream:scope', () => setTimeout(tagCharts, 30));
   if (mobile || typeof THREE === 'undefined' || !(window.__EARTH_TEX || {}).day) return;   // 手机：保留可滚动长页
   window.__STAGE = true; document.documentElement.classList.add('stage-mode');
-  window.__bootMsg && window.__bootMsg('正在渲染 3D 地球…');
+  window.__bootMsg && window.__bootMsg('正在渲染 3D 地球…'); window.__bootProgress && window.__bootProgress('globe');
   document.querySelector('.globe-intro')?.remove();
   /* ---- 2. DOM 骨架 ---- */
   const st = document.createElement('div'); st.id = 'stage'; st.setAttribute('aria-label', '旅游数据仓库可视化大屏');
@@ -3638,19 +3664,37 @@ window.TourismComparison.init();
   window.dreamGlobe = {select, compare: (a, b) => compare(a, b), flyTo, reset, openDeck, closeDeck, tour, palette, help, layer, setYear, years, openCity, cityIdx: q => CREF ? CREF.en.findIndex((e, i) => e === q || CREF.zh[i] === q) : -1, find, refN: () => refN, dbg: () => ({hd: hdState, tiles: [...tiles.values()].filter(t => t.mesh).length, ne10: !!ne10, lowQ, fail: window.__hdFail || 0})};
   /* ---- 启动 ---- */
   targetSpikes(); paintChor(); applyLayers(); renderPanels(); resize(); canvas.style.cursor = 'grab'; applyGlobeTheme();
-  if (!RM) { camS.dist = 7.5; camS.lon = -60; st.classList.add('booting'); setTimeout(() => flyTo(22, 20, 3.4, 1900), 120); setTimeout(() => st.classList.remove('booting'), 200); }
+  const BOOT = document.getElementById('boot') && !document.body.classList.contains('boot-done');
+  if (BOOT) { st.classList.add('booting'); idleT = performance.now() + 1e9; /* 加载屏在上：大屏地球先停在最终机位渲染好，等待交接 */
+    window.__stageInfo = {view: () => ({lat: camS.lat, lon: camS.lon, dist: camS.dist, fov: cam.fov}), ready: () => !!(earthMat.map && earthMat.map.image) && frame > 2,
+      reveal: () => { st.classList.remove('booting'); idleT = performance.now(); wake(); }}; wake(); }
+  else if (!RM) { camS.dist = 7.5; camS.lon = -60; st.classList.add('booting'); setTimeout(() => flyTo(22, 20, 3.4, 1900), 120); setTimeout(() => st.classList.remove('booting'), 200); }
   if (city !== '全球' && isoOfZh[city]) select(isoOfZh[city], {noScope: true}); else sideGlobal();
   if (location.hash.length > 1 && !location.hash.startsWith('#!')) { const id = location.hash.slice(1), k = Object.keys(GROUPS).find(g => GROUPS[g].includes(id)); if (k) setTimeout(() => openDeck(k), 200); }
 })();
-/* ==== v17 首屏加载屏：首次渲染完成后淡出 ==== */
+/* ==== v19 首屏加载屏 → 3D 大屏无缝交接：最短停留 2.5s；进度跟随真实加载阶段；地球机位对齐后交叉淡化 ==== */
 (() => {
   const boot = document.getElementById('boot');
-  if (!boot) return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(() => {
-    document.body.classList.add('boot-done');
-    setTimeout(() => boot.remove(), 1500);
-  }, reduce ? 0 : 450)));
+  if (!boot || boot.dataset.done) return;
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, MIN = RM ? 600 : 2500, FLY = 1500, T0 = performance.now();
+  window.__bootCtl = true; window.__bootProgress && window.__bootProgress('js');
+  let started = false;
+  const go = () => {
+    if (started) return; started = true; boot.dataset.done = '1'; window.__bootProgress && window.__bootProgress('done');
+    const S = window.__stageInfo, can = S && window.__bootHandoff && !RM;
+    document.body.classList.add('boot-handoff');
+    if (can) window.__bootHandoff(S.view(), FLY);
+    const fly = can ? FLY : 0;
+    setTimeout(() => { S && S.reveal(); }, Math.max(0, fly - 450));      // 面板在地球就位前开始由模糊变清晰
+    setTimeout(() => { document.body.classList.add('boot-done'); }, fly + 60);  // 机位重合 → 交叉淡化
+    setTimeout(() => boot.remove(), fly + 1400);
+  };
+  const tick = () => {
+    if (started) return;
+    const S = window.__stageInfo, ready = !S || S.ready(), el = performance.now() - T0;
+    if (S && ready) window.__bootProgress && window.__bootProgress('stage');
+    if ((ready && el >= MIN) || el > 12000) setTimeout(go, ready ? 350 : 0); else requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(() => requestAnimationFrame(tick));
 })();
-
 </script></body></html>
