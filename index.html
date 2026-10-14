@@ -738,6 +738,7 @@ html.stage-mode body>aside.stage-hidden,html.stage-mode .globe-intro{display:non
 .sg-sugg button.on,.sg-sugg button:hover,.sg-pl button.on,.sg-pl button:hover{background:rgba(196,181,253,.18)}
 .sg-sugg small,.sg-pl small{color:var(--ink2)}
 .sg-tools{position:absolute;right:1.6vw;top:1.6vh;display:flex;gap:.3em;padding:.35em}
+#stage>.sg-tools{z-index:6}/* v17 fix：图层下拉面板不被右侧信息面板（同 z-index，后 DOM）盖住 */
 .sg-tools>button{width:2.5em;height:2.5em;border-radius:12px;border:0;background:rgba(255,255,255,.06);color:#fff;font:inherit;cursor:pointer;transition:background .2s,transform .2s}
 .sg-tools>button:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}.sg-tools>button[aria-pressed=true]{color:var(--acc)}
 .sg-layers{position:absolute;right:0;top:calc(100% + .5em);padding:.8em 1em;display:grid;gap:.45em;min-width:10em}
