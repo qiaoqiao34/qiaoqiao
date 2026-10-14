@@ -1011,6 +1011,49 @@ body.boot-handoff #boot{background:transparent}
 @media (prefers-reduced-motion:reduce){.sg-demo.in,.sg-demo-bar{animation:none}}
 
 body.boot-done #boot.js-fade{opacity:1;visibility:visible}/* v20：交接淡化由 boot.js 逐帧驱动，与相机同一时钟 */
+
+/* ==== v21 酒店地图 v2：品牌深绿玻璃 ==== */
+.hm-section .hm-sub{font-size:12px;letter-spacing:.06em;color:var(--muted,rgba(200,225,215,.7))}
+.map-card.hm-card-wrap{background:#04110d;border:1px solid rgba(94,234,212,.18);border-radius:24px;box-shadow:0 40px 90px -40px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.05);font-family:'InterSub','Inter',"PingFang SC",'NotoSansSCSub',sans-serif}
+.map-card.hm-card-wrap.armed{box-shadow:0 0 0 1.5px rgba(94,234,212,.55),0 40px 90px -40px rgba(0,0,0,.75)}
+.hm-glass{background:rgba(14,42,34,.62);border:1px solid rgba(94,234,212,.2);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);color:#eaf4ef;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.hm-top{position:absolute;left:14px;right:14px;top:12px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:12px;pointer-events:none;z-index:2}
+.hm-top>*{pointer-events:auto}.hm-spacer{flex:1}
+.hm-top .map-scope{color:#eaf4ef;font-weight:500;border-radius:999px;padding:6px 12px;border-style:solid;letter-spacing:.02em}.hm-top .map-scope b{color:#5eead4;font-weight:600;font-variant-numeric:tabular-nums}
+.hm-legend{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 12px;font-size:11px;color:rgba(200,225,215,.75)}.hm-legend em{font-style:normal;font-variant-numeric:tabular-nums}
+.hm-legend i{width:84px;height:6px;border-radius:999px;background:linear-gradient(90deg,#5f7f78,#5eead4,#fde68a)}.hm-legend small{letter-spacing:.24em;font-size:9px;opacity:.6}
+.hm-auto{border-radius:999px;padding:6px 12px;font-size:11px;color:#fde68a;border-color:rgba(253,230,138,.28)}
+.hm-top .map-btn{border-radius:999px;padding:6px 13px;font-size:12px;color:#eaf4ef;cursor:pointer;transition:background .3s,border-color .3s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.hm-top .map-btn:hover{background:rgba(14,42,34,.85);border-color:rgba(94,234,212,.5);transform:translateY(-1px)}
+.hm-chips{position:absolute;left:14px;right:14px;top:52px;display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;z-index:2;padding-bottom:4px;-webkit-mask:linear-gradient(90deg,#000 92%,transparent);mask:linear-gradient(90deg,#000 92%,transparent)}
+.hm-chips::-webkit-scrollbar{display:none}
+.hm-chips button{flex:none;display:inline-flex;gap:6px;align-items:baseline;border-radius:999px;padding:5px 11px;font:inherit;font-size:12px;color:rgba(234,244,239,.82);background:rgba(6,22,17,.55);border:1px solid rgba(94,234,212,.14);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer;transition:background .3s,border-color .3s,color .3s}
+.hm-chips button small{font-size:10px;opacity:.55;font-variant-numeric:tabular-nums}
+.hm-chips button:hover{border-color:rgba(94,234,212,.45);color:#fff}.hm-chips button.on{background:rgba(94,234,212,.18);border-color:rgba(94,234,212,.6);color:#fff}
+.hm-empty{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,84%);padding:20px 22px;border-radius:20px;display:grid;gap:6px;text-align:center;z-index:3;animation:hmIn .7s cubic-bezier(.16,1,.3,1) both}
+.hm-empty b{font-size:16px;font-weight:600;letter-spacing:.04em}.hm-empty span{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#7fd9c0}.hm-empty p{margin:6px 0 4px;font-size:12.5px;line-height:1.7;color:rgba(200,225,215,.78)}
+.hm-btn{justify-self:center;border-radius:999px;padding:7px 14px;font:inherit;font-size:12px;color:#eaf4ef;background:rgba(94,234,212,.14);border:1px solid rgba(94,234,212,.4);cursor:pointer;transition:background .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.hm-btn:hover{background:rgba(94,234,212,.28);transform:translateY(-1px)}
+.hm-sel{position:absolute;left:14px;bottom:44px;width:min(330px,calc(100% - 28px));padding:14px 16px 14px;border-radius:18px;display:grid;gap:8px;z-index:3}
+.hm-sel.in{animation:hmIn .6s cubic-bezier(.16,1,.3,1) both}@keyframes hmIn{from{opacity:0;filter:blur(8px);translate:0 10px}}
+.hm-sel small{font-size:10px;letter-spacing:.16em;color:#7fd9c0;text-transform:uppercase;padding-right:24px}.hm-sel b{font-size:15px;font-weight:600;line-height:1.35}
+.hm-kv{display:flex;gap:26px}.hm-kv strong{display:block;font-size:22px;font-weight:300;font-variant-numeric:tabular-nums;color:#f2faf6}.hm-kv span{font-size:11px;color:rgba(200,225,215,.6)}
+.hm-acts{display:flex;flex-wrap:wrap;gap:6px}.hm-acts .hm-btn{padding:5px 11px;font-size:11.5px}
+.hm-x{position:absolute;right:10px;top:8px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(255,255,255,.08);color:#eaf4ef;cursor:pointer;font-size:15px;line-height:1}
+.hm-scale{position:absolute;left:16px;bottom:14px;display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.08em;color:rgba(200,225,215,.7);pointer-events:none;z-index:2}
+.hm-scale i{display:block;height:6px;border:1px solid rgba(234,244,239,.6);border-top:0;transition:width .25s}
+.hm-hint{position:absolute;right:14px;bottom:12px;font-size:10.5px;letter-spacing:.06em;color:rgba(200,225,215,.45);pointer-events:none;z-index:2}
+.hm-card-wrap .map-tip{background:rgba(10,34,27,.86);border:1px solid rgba(94,234,212,.3);border-radius:14px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#eaf4ef;max-width:250px;z-index:4;box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+.hm-card-wrap .map-tip b{color:#f2faf6}.hm-card-wrap .map-tip b em,.hm-card-wrap .map-tip span em{font-style:normal;opacity:.6;font-weight:400;margin-left:4px}.hm-card-wrap .map-tip span{color:rgba(200,225,215,.8)}.hm-card-wrap .map-tip strong{color:#5eead4}.hm-card-wrap .map-tip small{color:#7fd9c0;opacity:.8}
+.hm-note{font-size:12px;line-height:1.75}
+.hm-pin{margin-left:6px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(94,234,212,.35);background:rgba(14,42,34,.4);color:#5eead4;font-size:12px;line-height:1;cursor:pointer;vertical-align:middle;transition:background .3s,transform .3s}
+.hm-pin:hover{background:rgba(94,234,212,.22);transform:scale(1.08)}
+#hotel-rows tr.hm-row-hl td{background:rgba(94,234,212,.08)}
+#hotel-rows tr.hm-row-flash td{animation:hmFlash 2.2s ease}@keyframes hmFlash{0%,30%{background:rgba(94,234,212,.22)}100%{background:transparent}}
+@media (max-width:760px){.hm-top{gap:6px}.hm-legend{display:none}.hm-hint{display:none}.hm-chips{top:48px}.hm-sel{bottom:38px}.hm-auto{font-size:10px}}
+@media (prefers-reduced-motion:reduce){.hm-empty,.hm-sel.in,#hotel-rows tr.hm-row-flash td{animation:none}.hm-scale i{transition:none}}
+
+.hm-empty[hidden],.hm-sel[hidden],.hm-auto[hidden],.hm-chips[hidden]{display:none!important}
 </style></head><body>
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></symbol><symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="i-visitors" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5"/></symbol><symbol id="i-reviews" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></symbol><symbol id="i-hotels" viewBox="0 0 24 24"><path d="M5 21V3h14v18M3 21h18M10 21v-5h4v5M9 7h1M14 7h1M9 11h1M14 11h1"/></symbol><symbol id="i-methods" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9L12 3Z"/></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10M15 5h6v6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/></symbol></defs></svg><div id="boot" role="status" aria-label="页面加载中"><canvas class="boot-canvas" aria-hidden="true"></canvas><div class="boot-stars" aria-hidden="true"></div><div class="boot-orbit" aria-hidden="true"><i class="o1"></i><i class="o2"></i></div><div class="boot-inner"><div class="boot-globe" aria-hidden="true"><i class="mg"></i><i class="eq"></i></div><div class="boot-name">旅析<small>TOURISM INSIGHTS</small></div><div class="boot-tag">以真实评论，观察旅居体验</div><div class="boot-bar"><i></i></div><div class="boot-text" id="boot-text">正在加载页面…</div><div class="boot-stats"><span><b>144.9万</b>评论</span><span><b>2,670</b>城市</span><span><b>16,174</b>住宿</span></div><div class="boot-cap" aria-hidden="true">Hadoop · Hive · Spark</div></div></div><script>(function(){function h(){var b=document.getElementById("boot");if(!b||b.dataset.done)return;b.dataset.done="1";document.body.classList.add("boot-done");setTimeout(function(){var x=document.getElementById("boot");if(x)x.remove();},1500);}function m(t){var e=document.getElementById("boot-text");if(!e||!t)return;e.classList.add("swap");setTimeout(function(){e.textContent=t;e.classList.remove("swap");},180);}var P={html:.12,tex:.3,js:.42,data:.58,globe:.74,stage:.92,done:1},cur=.04;function pg(k){var v=P[k]||0,b=document.getElementById("boot");if(!b||v<=cur)return;cur=v;b.style.setProperty("--p",v);}window.__bootProgress=pg;pg("html");window.addEventListener("load",function(){setTimeout(function(){if(!window.__bootCtl)h();},800);});setTimeout(h,20000);window.__hideBoot=h;window.__bootMsg=m;})();</script><a class="skip-link" href="#overview">跳至主要内容</a>
 <aside><a class="brand" href="#overview" aria-label="旅析首页"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="brand-name">旅<span>析</span><small>TOURISM INSIGHTS</small></span></a><div class="nav-label">分析导航</div><nav aria-label="分析章节"><a href="#overview" aria-label="数据总览"><svg class="icon" aria-hidden="true"><use href="#i-overview"/></svg><span class="nav-text">数据总览</span><span class="nav-mobile-text">总览</span><span class="nav-index">01</span></a><a href="#visitors" aria-label="游客与出行"><svg class="icon" aria-hidden="true"><use href="#i-visitors"/></svg><span class="nav-text">游客与出行</span><span class="nav-mobile-text">出行</span><span class="nav-index">02</span></a><a href="#reviews" aria-label="评价洞察"><svg class="icon" aria-hidden="true"><use href="#i-reviews"/></svg><span class="nav-text">评价洞察</span><span class="nav-mobile-text">评价</span><span class="nav-index">03</span></a><a href="#hotels" aria-label="酒店探索"><svg class="icon" aria-hidden="true"><use href="#i-hotels"/></svg><span class="nav-text">酒店探索</span><span class="nav-mobile-text">酒店</span><span class="nav-index">04</span></a><a href="#methods" aria-label="数据与方法"><svg class="icon" aria-hidden="true"><use href="#i-methods"/></svg><span class="nav-text">数据与方法</span><span class="nav-mobile-text">方法</span><span class="nav-index">05</span></a></nav><div class="sidefoot"><div class="side-project"><span class="live-dot"></span><strong>个人毕业设计</strong></div><p>大数据方向 · 旅游住宿分析</p><div class="side-line"></div><p>Hadoop / Spark / Python<br>以真实评论，观察旅居体验</p><div class="side-edition">DATA EDITION &nbsp; 2015—2017</div></div></aside>
@@ -1073,7 +1116,7 @@ vec3 nc=texture2D(night,vU).rgb;float lum=max(max(nc.r,nc.g),nc.b);lum=smoothste
 dc=mix(dc*vec3(.92,1.02,.98),dc*vec3(1.02,.99,1.),hk);dc=pow(dc,vec3(mix(1.12,.95,hk)))*mix(.92,1.08,hk);vec3 col=mix(nc+vec3(.010,.028,.024)+dc*vec3(.01,.03,.028),dc*(.12+.9*max(d,0.)),k);
 vec3 h=normalize(sun+vV);float sp=pow(max(dot(vN,h),0.),40.)*(1.-cl)*.35*k;col+=vec3(.7,.95,.9)*sp;
 float f=pow(1.-max(dot(vN,vV),0.),3.);col+=mix(vec3(.3,.9,.8),vec3(.62,.55,1.),hk)*f*(.12+.9*k);
-vec3 dl=mix(pow(texture2D(day,vU).rgb,vec3(2.2)),vec3(1.),cl2*.85*ck);vec3 ph=pow(dl*(vec3(.72,.77,1.)*.55+vec3(1.05)*max(d,0.)),vec3(1./2.2));
+vec3 dl=mix(pow(texture2D(day,vU).rgb,vec3(2.2)),vec3(1.),cl2*.85*ck);vec3 ph=pow(dl*(vec3(.72,.77,1.)*.28+vec3(1.25)*max(d,0.)),vec3(1./2.2));
 float nn=smoothstep(.12,-.22,d);ph=mix(ph,texture2D(night,vU).rgb*vec3(1.,.85,.6)*1.6,nn*.78);
 gl_FragColor=vec4(mix(col,ph,hk),1.);}`});
 const earth=new THREE.Mesh(new THREE.SphereGeometry(1,128,96),earthMat);
@@ -1931,7 +1974,7 @@ window.TourismComparison = (() => {
     });
     refresh();
   }
-  return Object.freeze({init, refresh});
+  return Object.freeze({init, refresh, toggle, has: id => selectedIds.includes(id)});
 })();
 window.TourismComparison.init();
 
@@ -2836,102 +2879,203 @@ window.TourismComparison.init();
   const flash = el => { if (!el) return; el.classList.remove('qa-flash'); void el.offsetWidth; el.classList.add('qa-flash'); setTimeout(() => el.classList.remove('qa-flash'), 2600); };
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
-  /* ---------- 1. 酒店地图（离线：地球卫星贴图等距投影 + Canvas 点位） ---------- */
+  /* ---------- 1. 酒店地图 v2：品牌深绿玻璃 · 中英别名合并 · 缩放聚合 + 同址散开 · 离线矢量底图 + 比例尺 · 地图↔表格联动（全部为 dws_hotel 真实数据） ---------- */
   const hotelsAnchor = $id('hotels');
   if (hotelsAnchor) {
-    const all = T().dws_hotel.filter(h => Number.isFinite(+h.latitude) && Number.isFinite(+h.longitude) && h.latitude !== null && h.longitude !== null);
-    const euH = T().dws_hotel.filter(h => !h.scope), missing = euH.length - euH.filter(h => Number.isFinite(+h.latitude) && h.latitude !== null).length;
-    const sec = document.createElement('section'); sec.className = 'map-section'; sec.id = 'hotel-map';
-    sec.innerHTML = `<div class="section-title"><div class="section-left"><span class="section-number">🗺️</span><div><h2>酒店地图</h2><div class="section-en">HOTEL MAP · ${fmtN(euH.length - missing)} / ${fmtN(euH.length)} HOTELS + 152 COUNTRIES</div></div></div><span>颜色=平均评分 · 大小=有效评论数 · 跟随城市与酒店筛选</span></div>
-      <div class="map-card"><canvas class="map-canvas" aria-label="酒店分布地图" role="img"></canvas>
-      <div class="map-hud"><span class="map-scope"></span><span class="map-legend"><i></i><em>低分</em><em>高分</em></span><button type="button" class="map-btn map-reset">全部六城</button><span class="map-help">悬停查看 · 点击打开详情 · 点击地图后滚轮缩放、拖动平移</span></div>
-      <div class="map-tip" role="tooltip"></div></div>
-      <p class="note">坐标取自 dws_hotel 的经纬度字段；${fmtN(missing)} 家酒店缺少坐标未落点（数据集原样）。底图为离线内嵌的地球卫星贴图（等距投影）叠加 Natural Earth 国界，仅作示意。</p>`;
+    const RAW = T().dws_hotel || [], has = h => h.latitude != null && h.longitude != null && Number.isFinite(+h.latitude) && Number.isFinite(+h.longitude);
+    const all = RAW.filter(has), euH = RAW.filter(h => !h.scope), missEU = euH.filter(h => !has(h)).length, missAll = RAW.length - all.length;
+    const GTOT = (((payload.global || {}).tables || {}).dws_country || []).filter(r => r.data_source === '全部').reduce((s, r) => s + (r.hotel_count || 0), 0);
+    const perScope = {}; RAW.forEach(h => { if (h.scope && h.scope !== '全球') perScope[h.scope] = (perScope[h.scope] || 0) + 1; });
+    const capN = Math.max(0, ...Object.values(perScope)), nGlobalTop = RAW.filter(h => h.scope === '全球').length;
+    /* 城市别名（仅显示层，不改数仓）：中文名 ↔ GeoNames 英文名，大小写/空格归一，按国家区分同名城市 */
+    const EN2ZH = new Map(), ZH2EN = new Map(), CJK = /[\u4e00-\u9fff]/;
+    if (CREF) { for (let i = 0; i < CREF.n; i++) { const z = CREF.zh[i]; if (!z) continue; const k = CREF.en[i].toLowerCase(), p = CREF.pop(i) || 0;
+      if (!EN2ZH.has(k) || EN2ZH.get(k)[1] < p) EN2ZH.set(k, [z, p]); if (!ZH2EN.has(z) || ZH2EN.get(z)[1] < p) ZH2EN.set(z, [CREF.en[i], p]); } }
+    const AK = new WeakMap(), titleCase = s => s === s.toLowerCase() ? s.replace(/(^|[\s-])([a-z])/g, (m, a, b) => a + b.toUpperCase()) : s;
+    const A = h => { let a = AK.get(h); if (a) return a; const raw = String(h.city || '').trim().replace(/\s+/g, ' '); let en, zh;
+      if (CJK.test(raw)) { zh = raw; en = (ZH2EN.get(raw) || [raw])[0]; } else { en = titleCase(raw); zh = (EN2ZH.get(raw.toLowerCase()) || [''])[0]; }
+      a = {k: String(h.country || '').toLowerCase() + '|' + en.toLowerCase(), en, zh}; AK.set(h, a); return a; };
+    const cityName = a => a.zh && a.zh !== a.en ? a.zh : a.en, cityFull = a => a.zh && a.zh !== a.en ? `${a.zh} <em>${esc(a.en)}</em>` : esc(a.en);
+    const sec = document.createElement('section'); sec.className = 'map-section hm-section'; sec.id = 'hotel-map';
+    sec.innerHTML = `<div class="section-title"><div class="section-left"><span class="section-number">🗺️</span><div><h2>酒店地图</h2><div class="section-en">HOTEL MAP · STAYS ON THE MAP</div></div></div><span class="hm-sub">颜色 = 平均评分 · 大小 = 有效评论数 · 与下方表格联动</span></div>
+      <div class="map-card hm-card-wrap"><canvas class="map-canvas" aria-label="住宿分布地图" role="img"></canvas>
+      <div class="hm-top"><span class="map-scope hm-glass"></span><span class="hm-legend hm-glass" aria-hidden="true"><em>6.5</em><i></i><em>9.5</em><small>SCORE</small></span><span class="hm-auto hm-glass" hidden></span><span class="hm-spacer"></span><button type="button" class="map-btn map-reset hm-glass">⟲ 复位 Reset</button></div>
+      <div class="hm-chips" role="group" aria-label="城市 Cities"></div>
+      <div class="hm-empty hm-glass" hidden role="status"></div><div class="hm-sel hm-glass" hidden></div>
+      <div class="hm-scale" aria-hidden="true"><i></i><span></span></div><div class="hm-hint">点击地图后可滚轮缩放 · 拖动平移 · Esc 收起</div>
+      <div class="map-tip" role="tooltip"></div></div><p class="note hm-note"></p>`;
     hotelsAnchor.parentNode.insertBefore(sec, hotelsAnchor);
     const card = sec.querySelector('.map-card'), cv = sec.querySelector('canvas'), g = cv.getContext('2d'), tip = sec.querySelector('.map-tip'), scopeEl = sec.querySelector('.map-scope');
+    const chipsEl = sec.querySelector('.hm-chips'), emptyEl = sec.querySelector('.hm-empty'), selEl = sec.querySelector('.hm-sel'), autoEl = sec.querySelector('.hm-auto'), scaleEl = sec.querySelector('.hm-scale');
+    sec.querySelector('.hm-note').textContent = `覆盖说明：本页内嵌住宿 ${fmtN(RAW.length)} 家（欧洲六城 ${fmtN(euH.length)} 家全量；全球部分按国家每国最多 ${capN} 家、全球榜 ${nGlobalTop} 家）/ 全库 ${fmtN(GTOT)} 家（dws_country · 全部来源）。有坐标 ${fmtN(all.length)} 家，缺坐标 ${fmtN(missAll)} 家（其中六城 ${fmtN(missEU)} 家，数据集原样未落点）。城市名在地图上按 GeoNames 中英文别名合并显示。底图：离线地球贴图（远景）+ Natural Earth 1:10m 海岸线与国界（近景），仅作示意。`;
     const bg = new Image(); let bgReady = false; bg.onload = () => { bgReady = true; draw(); }; if (window.__EARTH_TEX?.day) bg.src = window.__EARTH_TEX.day;
-    const EU = {lon: 6.5, lat: 47.2, z: 30};   // z = 每经度像素（CSS px）
-    let view = {...EU}, anim = null, W = 0, H = 0, dpr = 1, pts = [], hover = null, armed = false;
-    const kx = lat => Math.cos(view.lat * Math.PI / 180);
+    /* 近景矢量：Natural Earth 1:10m（与 3D 地球共用 vendor/world/ne10m.js，按需加载） */
+    let NE = null, neState = 0;
+    const takeNE = N => { if (!N || NE) return; const mk = arr => arr.map(q => { const pts = new Float32Array(q.length); let x0 = 999, y0 = 999, x1 = -999, y1 = -999; for (let i = 0; i < q.length; i += 2) { const lo = q[i] / 200, la = q[i + 1] / 200; pts[i] = lo; pts[i + 1] = la; x0 = Math.min(x0, lo); x1 = Math.max(x1, lo); y0 = Math.min(y0, la); y1 = Math.max(y1, la); } return {pts, bb: [x0, y0, x1, y1]}; });
+      NE = {coast: mk(N.coast || []), border: mk(N.border || [])}; draw(); };
+    const needNE = () => { if (NE || neState) return; const N = window.__NE10_KEEP || window.__NE10; if (N) return takeNE(N); neState = 1; const s = document.createElement('script'); s.src = 'vendor/world/ne10m.js'; s.onload = () => { window.__NE10_KEEP = window.__NE10_KEEP || window.__NE10; takeNE(window.__NE10_KEEP); }; s.onerror = () => { neState = 2; }; document.head.appendChild(s); };
+    const EU = {lon: 6.5, lat: 47.2, z: 30}, ZMAX = 2600;
+    let view = {...EU}, W = 0, H = 0, dpr = 1, pts = [], hover = null, armed = false, sel = null, linkId = null, spider = null, focus = null, shown = [], born = 0, raf = 0, anim = null;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v)), zmin = () => Math.max(2.2, W / 420);
+    const kx = () => Math.cos(view.lat * Math.PI / 180);
     const proj = (lon, lat) => [W / 2 + (lon - view.lon) * view.z * kx(), H / 2 - (lat - view.lat) * view.z];
     const unproj = (x, y) => [view.lon + (x - W / 2) / (view.z * kx()), view.lat - (y - H / 2) / view.z];
-    const scoreCol = s => { const t = Math.max(0, Math.min(1, (s - 6.5) / 3)); const stops = [[103, 232, 249], [167, 139, 250], [249, 168, 212], [253, 230, 138]]; const p = t * 3, i = Math.min(2, Math.floor(p)), f = p - i, a = stops[i], b = stops[i + 1]; return `rgb(${a.map((v, j) => Math.round(v + (b[j] - v) * f)).join(',')})`; };
+    const STOPS = [[95, 127, 120], [94, 234, 212], [253, 230, 138]];
+    const scoreRGB = s => { const t = clamp((s - 6.5) / 3, 0, 1), p = t * 2, i = Math.min(1, Math.floor(p)), f = p - i, a = STOPS[i], b = STOPS[i + 1]; return a.map((v, j) => Math.round(v + (b[j] - v) * f)); };
+    const rgba = (c, al) => `rgba(${c[0]},${c[1]},${c[2]},${al})`;
     const fitFor = list => { if (!list.length) return {...EU}; const lons = list.map(h => +h.longitude), lats = list.map(h => +h.latitude);
       const lo = [Math.min(...lons), Math.max(...lons)], la = [Math.min(...lats), Math.max(...lats)], c = {lon: (lo[0] + lo[1]) / 2, lat: (la[0] + la[1]) / 2};
-      const zx = (W * .82) / Math.max(.02, (lo[1] - lo[0]) * Math.cos(c.lat * Math.PI / 180)), zy = (H * .78) / Math.max(.02, la[1] - la[0]);
-      return {...c, z: Math.min(9000, zx, zy)}; };
-    const flyTo = v => { if (reduce) { view = v; draw(); return; } const from = {...view}, t0 = performance.now(), dur = 1100;
-      anim = now => { const k = Math.min(1, (now - t0) / dur), e = easeIO(k); view = {lon: from.lon + (v.lon - from.lon) * e, lat: from.lat + (v.lat - from.lat) * e, z: Math.exp(Math.log(from.z) + (Math.log(v.z) - Math.log(from.z)) * e)}; draw(); if (k < 1) requestAnimationFrame(anim); else anim = null; };
-      requestAnimationFrame(anim); };
-    const visible = () => { let list; try { list = tableData(); } catch (_) { list = all; } const ids = new Set(list.map(h => h.hotel_id)); return all.filter(h => ids.has(h.hotel_id)); };
-    let shown = [], born = 0, maxRev = Math.max(...all.map(h => h.review_count));
-    const refresh = (fly) => { shown = visible(); born = performance.now(); scopeEl.textContent = `${curCity() === '全部' ? '全部六城' : curCity()} · 地图上 ${fmtN(shown.length)} 家（筛选后）`; if (fly) flyTo(curCity() === '全部' ? {...EU} : fitFor(shown.length ? shown : all.filter(h => h.city === curCity()))); fadeLoop(); };
-    const fadeLoop = () => { const st = () => { draw(); if (performance.now() - born < 700) requestAnimationFrame(st); }; requestAnimationFrame(st); };
-    function draw() {
-      if (!W) return; g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
-      const day = document.body.classList.contains('theme-day');
-      if (bgReady) { // 等距投影贴图：经度 -180..180 → 0..w，纬度 90..-90 → 0..h
-        const [x0, y0] = proj(-180, 90), [x1, y1] = proj(180, -90);
-        g.globalAlpha = day ? .85 : .78; g.imageSmoothingQuality = 'high'; g.drawImage(bg, x0, y0, x1 - x0, y1 - y0); g.globalAlpha = 1; }
-      g.fillStyle = day ? 'rgba(246,243,255,.16)' : 'rgba(13,11,36,.2)'; g.fillRect(0, 0, W, H);
-      if (WORLD.has) { g.strokeStyle = day ? 'rgba(76,29,149,.35)' : 'rgba(255,255,255,.38)'; g.lineWidth = 1; g.beginPath(); WORLD.geo.forEach(c => WORLD.path(g, c, proj)); g.stroke(); }
-      // 经纬网
-      g.strokeStyle = day ? 'rgba(124,58,237,.12)' : 'rgba(196,181,253,.12)'; g.lineWidth = 1; g.beginPath();
-      const step = view.z > 600 ? .1 : view.z > 120 ? 1 : 5;
+      const zx = (W * .78) / Math.max(.06, (lo[1] - lo[0]) * Math.cos(c.lat * Math.PI / 180)), zy = (H * .66) / Math.max(.05, la[1] - la[0]);
+      return {...c, z: clamp(Math.min(zx, zy), zmin(), ZMAX * .55)}; };
+    const tick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+    function loop(now) { raf = 0; if (anim) anim(now); draw(); if (anim || now - born < 700 || sel || linkId) tick(); }
+    const flyTo = v => { v = {...v, z: clamp(v.z, zmin(), ZMAX)}; spider = null; if (reduce || !W) { view = v; anim = null; tick(); return; } const from = {...view}, t0 = performance.now(), dur = 1150;
+      anim = now => { const k = Math.min(1, (now - t0) / dur), e = easeIO(k); view = {lon: from.lon + (v.lon - from.lon) * e, lat: from.lat + (v.lat - from.lat) * e, z: Math.exp(Math.log(from.z) + (Math.log(v.z) - Math.log(from.z)) * e)}; if (k >= 1) anim = null; }; tick(); };
+    const scopeList = () => { try { return tableData(); } catch (_) { return hotels(); } };
+    const isGlobal = () => curCity() === '全球';
+    const visible = () => { let v; if (isGlobal()) v = all; else { const ids = new Set(scopeList().map(h => h.hotel_id)); v = all.filter(h => ids.has(h.hotel_id)); } return focus ? v.filter(h => A(h).k === focus) : v; };
+    let maxRev = Math.max(1, ...all.map(h => h.review_count));
+    /* 全球/国家等 Hostelworld 范围评论量较小：默认把「≥100 条」放宽为「不限」，用户手动改过则尊重用户 */
+    const minEl = $id('minimum'), searchEl = $id('search'); let userMin = false; minEl?.addEventListener('change', e => { if (e.isTrusted) userMin = true; });
+    const relax = () => { if (!minEl || userMin) { autoEl.hidden = true; return; } const L = typeof levelOf === 'function' ? levelOf(curCity()) : 'eu6', want = (L === 'eu6' || L === 'city') ? '100' : '0';
+      autoEl.hidden = want !== '0'; autoEl.textContent = '已自动放宽：评论数不限 · Hostelworld 样本评论量较小';
+      if (minEl.value !== want) { minEl.value = want; minEl.dispatchEvent(new Event('change')); return true; } return false; };
+    const renderChips = () => { let base; if (isGlobal()) base = all; else { const ids = new Set(scopeList().map(h => h.hotel_id)); base = all.filter(h => ids.has(h.hotel_id)); }
+      const m = new Map(); base.forEach(h => { const a = A(h), o = m.get(a.k) || m.set(a.k, {a, n: 0}).get(a.k); o.n++; });
+      const top = [...m.values()].sort((x, y) => y.n - x.n).slice(0, isGlobal() ? 8 : 10);
+      chipsEl.innerHTML = top.length > 1 ? `<button type="button" data-k="" class="${focus ? '' : 'on'}">全部 All</button>` + top.map(o => `<button type="button" data-k="${esc(o.a.k)}" class="${focus === o.a.k ? 'on' : ''}">${esc(cityName(o.a))}<small>${fmtN(o.n)}</small></button>`).join('') : '';
+      chipsEl.hidden = top.length <= 1; };
+    chipsEl.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; focus = b.dataset.k || null; sel = null; refresh(true); });
+    const scopeName = () => { const c = curCity(); return c === '全部' ? '欧洲六城 Europe-6' : c === '全球' ? '全球 Global' : c; };
+    function renderEmpty() { if (shown.length) { emptyEl.hidden = true; return; } const inScope = (() => { try { return hotels(); } catch (_) { return []; } })(), withXY = inScope.filter(has).length;
+      const tight = (minEl && minEl.value !== '0') || (searchEl && searchEl.value);
+      emptyEl.innerHTML = `<b>当前筛选下没有可落点的住宿</b><span>No mappable stays for this filter</span><p>${esc(scopeName())}：本页共有 ${fmtN(inScope.length)} 家住宿，其中 ${fmtN(withXY)} 家有坐标${tight ? `；当前条件为「评论 ≥ ${esc(minEl.value)} 条${searchEl && searchEl.value ? ' · 搜索 “' + esc(searchEl.value) + '”' : ''}」` : ''}。</p>${tight ? '<button type="button" class="hm-btn" data-relax>放宽为「不限」 Show all</button>' : ''}`;
+      emptyEl.hidden = false; }
+    emptyEl.addEventListener('click', e => { if (!e.target.closest('[data-relax]')) return; userMin = true; if (searchEl) { searchEl.value = ''; searchEl.dispatchEvent(new Event('input')); } if (minEl) { minEl.value = '0'; minEl.dispatchEvent(new Event('change')); } });
+    function refresh(fly) { shown = visible(); born = performance.now(); maxRev = Math.max(1, ...shown.map(h => h.review_count), 1);
+      if (sel && !shown.includes(sel)) { sel = null; renderSel(); }
+      scopeEl.innerHTML = `${esc(scopeName())}${focus ? ' · ' + esc(cityName(A(shown[0] || {}) )) : ''} · 地图上 <b>${fmtN(shown.length)}</b> 家`;
+      renderChips(); renderEmpty();
+      if (fly) flyTo(curCity() === '全部' && !focus ? {...EU} : shown.length ? fitFor(shown) : {...EU}); tick(); }
+    /* 选中卡片：详情 / 对比 / 飞到 / 表格定位 */
+    const rowOf = id => document.querySelector(`#hotel-rows [data-hotel-id="${CSS.escape(id)}"]`);
+    function renderSel() { if (!sel) { selEl.hidden = true; return; } const h = sel, a = A(h), c = scoreRGB(h.avg_score), cmp = window.TourismComparison, inCmp = cmp?.has?.(h.hotel_id);
+      selEl.innerHTML = `<button type="button" class="hm-x" data-a="close" aria-label="关闭">×</button><small>HOTEL · ${esc(cityName(a))}${a.zh && a.zh !== a.en ? ' ' + esc(a.en) : ''} · ${esc(h.country || '')}</small><b>${esc(h.hotel_name)}</b>
+        <div class="hm-kv"><div><strong style="color:${rgba(c, 1)}">${f2(h.avg_score)}</strong><span>平均评分 score</span></div><div><strong>${fmtN(h.review_count)}</strong><span>有效评论 reviews</span></div></div>
+        <div class="hm-acts"><button type="button" class="hm-btn" data-a="detail">详情 Detail</button>${cmp && typeof cmp.toggle === 'function' ? `<button type="button" class="hm-btn" data-a="cmp">${inCmp ? '已加入对比 ✓' : '加入对比 Compare'}</button>` : ''}<button type="button" class="hm-btn" data-a="fly">飞到 Fly</button>${rowOf(h.hotel_id) ? '<button type="button" class="hm-btn" data-a="row">表格定位 Row</button>' : ''}</div>`;
+      selEl.hidden = false; selEl.classList.remove('in'); void selEl.offsetWidth; selEl.classList.add('in'); }
+    selEl.addEventListener('click', e => { const b = e.target.closest('[data-a]'); if (!b || !sel) return; const a = b.dataset.a, h = sel;
+      if (a === 'close') { sel = null; renderSel(); tick(); }
+      else if (a === 'detail' && typeof openHotel === 'function') openHotel(h.hotel_id);
+      else if (a === 'cmp') { window.TourismComparison.toggle(h.hotel_id); renderSel(); }
+      else if (a === 'fly') flyTo({lon: +h.longitude, lat: +h.latitude, z: Math.max(view.z, ZMAX * .6)});
+      else if (a === 'row') { const r = rowOf(h.hotel_id)?.closest('tr'); if (r) { r.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'}); r.classList.remove('hm-row-flash'); void r.offsetWidth; r.classList.add('hm-row-flash'); } } });
+    const select = h => { sel = h; spider = null; renderSel(); tick(); };
+    /* ---- 绘制 ---- */
+    function drawBase(day) {
+      const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#061a14'); gr.addColorStop(1, '#030d0a'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+      const lz = Math.log(view.z), satA = bgReady ? .72 * clamp(1 - (lz - Math.log(45)) / (Math.log(420) - Math.log(45)), 0, 1) : 0;
+      if (satA > .01) { const [x0, y0] = proj(-180, 90), [x1, y1] = proj(180, -90); g.globalAlpha = satA; g.imageSmoothingQuality = 'high'; g.drawImage(bg, x0, y0, x1 - x0, y1 - y0); g.globalAlpha = 1;
+        g.fillStyle = 'rgba(8,34,27,.38)'; g.fillRect(0, 0, W, H); }
       const [l0, t0] = unproj(0, 0), [l1, t1] = unproj(W, H);
-      for (let lo = Math.ceil(l0 / step) * step; lo <= l1; lo += step) { const [x] = proj(lo, 0); g.moveTo(x, 0); g.lineTo(x, H); }
-      for (let la = Math.ceil(t1 / step) * step; la <= t0; la += step) { const [, y] = proj(0, la); g.moveTo(0, y); g.lineTo(W, y); }
+      // 经纬网
+      const step = view.z > 900 ? .05 : view.z > 300 ? .25 : view.z > 90 ? 1 : view.z > 25 ? 5 : 15;
+      g.strokeStyle = 'rgba(127,217,192,.07)'; g.lineWidth = 1; g.beginPath();
+      for (let lo = Math.ceil(l0 / step) * step; lo <= l1; lo += step) { const [x] = proj(lo, 0); g.moveTo(Math.round(x) + .5, 0); g.lineTo(Math.round(x) + .5, H); }
+      for (let la = Math.ceil(t1 / step) * step; la <= t0; la += step) { const [, y] = proj(0, la); g.moveTo(0, Math.round(y) + .5); g.lineTo(W, Math.round(y) + .5); }
       g.stroke();
-      const k = Math.min(1, (performance.now() - born) / 650), ek = 1 - Math.pow(1 - k, 3);
-      pts = [];
-      const cluster = view.z < 70;
-      if (cluster) { // 欧洲视角：按城市聚合气泡
-        const groups = {}; shown.forEach(h => { (groups[h.city] ||= []).push(h); });
-        Object.entries(groups).forEach(([c, list]) => { const lon = list.reduce((s, h) => s + +h.longitude, 0) / list.length, lat = list.reduce((s, h) => s + +h.latitude, 0) / list.length, [x, y] = proj(lon, lat);
-          const n = list.reduce((s, h) => s + h.review_count, 0), avg = list.reduce((s, h) => s + h.avg_score * h.review_count, 0) / n, r = (10 + Math.sqrt(list.length) * 2.2) * ek;
-          const gr = g.createRadialGradient(x, y, 0, x, y, r * 2.2); gr.addColorStop(0, scoreCol(avg)); gr.addColorStop(.45, scoreCol(avg).replace('rgb', 'rgba').replace(')', ',.35)')); gr.addColorStop(1, 'rgba(0,0,0,0)');
-          g.fillStyle = gr; g.beginPath(); g.arc(x, y, r * 2.2, 0, 7); g.fill(); g.fillStyle = scoreCol(avg); g.beginPath(); g.arc(x, y, r, 0, 7); g.fill();
-          g.fillStyle = '#1a1240'; g.font = '700 12px Inter, -apple-system, sans-serif'; g.textAlign = 'center'; g.fillText(fmtN(list.length), x, y + 4);
-          g.fillStyle = day ? '#2a2350' : '#fff'; g.font = '600 12px Inter, -apple-system, "PingFang SC", sans-serif'; g.fillText(c, x, y - r - 8);
-          pts.push({x, y, r: r + 4, cluster: c, n: list.length, rev: n, avg}); });
-      } else {
-        const sorted = [...shown].sort((a, b) => b.review_count - a.review_count);
-        sorted.forEach(h => { const [x, y] = proj(+h.longitude, +h.latitude); if (x < -20 || y < -20 || x > W + 20 || y > H + 20) return;
-          const r = (2.2 + Math.sqrt(h.review_count / maxRev) * 11 * Math.min(1.6, Math.max(.7, view.z / 900))) * ek, c = scoreCol(h.avg_score), hot = hover && hover.h === h;
-          g.globalAlpha = .9; g.fillStyle = c; g.shadowColor = c; g.shadowBlur = hot ? 18 : 6; g.beginPath(); g.arc(x, y, hot ? r * 1.5 : r, 0, 7); g.fill(); g.shadowBlur = 0; g.globalAlpha = 1;
-          if (hot) { g.strokeStyle = '#fff'; g.lineWidth = 2; g.stroke(); }
-          pts.push({x, y, r: Math.max(5, r), h}); });
-      }
+      const near = view.z > 70; if (near) needNE();
+      const vb = [l0 - 1, t1 - 1, l1 + 1, t0 + 1], inV = bb => !(bb[2] < vb[0] || bb[0] > vb[2] || bb[3] < vb[1] || bb[1] > vb[3]);
+      const stroke = (lines, style, w, dash) => { g.strokeStyle = style; g.lineWidth = w; g.setLineDash(dash || []); g.beginPath(); lines.forEach(L => { if (!inV(L.bb)) return; const p = L.pts; let [x, y] = proj(p[0], p[1]); g.moveTo(x, y); for (let i = 2; i < p.length; i += 2) { [x, y] = proj(p[i], p[i + 1]); g.lineTo(x, y); } }); g.stroke(); g.setLineDash([]); };
+      if (near && NE) { const a = clamp((view.z - 70) / 120, 0, 1);
+        if (satA < .5) { g.fillStyle = `rgba(14,42,34,${.0})`; }
+        stroke(NE.coast, `rgba(127,217,192,${.25 + .4 * a})`, 1.1); stroke(NE.border, `rgba(234,244,239,${.1 + .18 * a})`, 1, [4, 4]); }
+      else if (WORLD.has) { g.strokeStyle = 'rgba(127,217,192,.32)'; g.lineWidth = .8; g.beginPath(); WORLD.geo.forEach(c => { if (inV(c.bb)) WORLD.path(g, c, proj); }); g.stroke(); }
+      // GeoNames 参考地名（真实城市点位，人口最大者优先，避让）
+      if (CREF && view.z > 110) { const cand = []; for (let i = 0; i < CREF.n; i++) { const la = CREF.lat(i), lo = CREF.lon(i); if (la < t1 || la > t0 || lo < l0 || lo > l1) continue; cand.push(i); }
+        cand.sort((a, b) => (CREF.pop(b) || 0) - (CREF.pop(a) || 0)); const occ = []; let n = 0; g.font = '500 11px InterSub, Inter, "PingFang SC", NotoSansSCSub, sans-serif'; g.textAlign = 'left';
+        for (const i of cand) { if (n >= 16) break; const [x, y] = proj(CREF.lon(i), CREF.lat(i)), t = CREF.zh[i] || CREF.en[i], w = g.measureText(t).width + 12, b = [x - 4, y - 8, x + w, y + 8];
+          if (occ.some(o => b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1])) continue; occ.push(b); n++;
+          g.fillStyle = 'rgba(234,244,239,.35)'; g.beginPath(); g.arc(x, y, 1.6, 0, 7); g.fill(); g.fillStyle = 'rgba(200,225,215,.42)'; g.fillText(t, x + 6, y + 4); } }
+      // 比例尺
+      const pxPerKm = view.z / 111.32, nice = [.05, .1, .2, .5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000]; let km = nice[0]; for (const v of nice) if (v * pxPerKm <= 130) km = v;
+      scaleEl.firstChild.style.width = (km * pxPerKm).toFixed(1) + 'px'; scaleEl.lastChild.textContent = km < 1 ? `${km * 1000} m` : `${km} km`;
     }
-    const size = () => { const r = card.getBoundingClientRect(); W = r.width; H = r.height; dpr = Math.min(devicePixelRatio, 2); cv.width = W * dpr; cv.height = H * dpr; draw(); };
+    function drawDot(x, y, r, c, hot) { g.fillStyle = rgba(c, hot ? .35 : .16); g.beginPath(); g.arc(x, y, r * 2.1, 0, 7); g.fill();
+      g.fillStyle = rgba(c, .95); g.beginPath(); g.arc(x, y, hot ? r * 1.35 : r, 0, 7); g.fill(); g.strokeStyle = hot ? '#fff' : 'rgba(255,255,255,.55)'; g.lineWidth = hot ? 1.6 : .7; g.stroke(); }
+    function drawBubble(x, y, r, c, text, label, hot) { const gr = g.createRadialGradient(x, y, r * .6, x, y, r * 2.2); gr.addColorStop(0, rgba(c, .28)); gr.addColorStop(1, rgba(c, 0)); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r * 2.2, 0, 7); g.fill();
+      g.fillStyle = 'rgba(10,34,27,.82)'; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); g.strokeStyle = rgba(c, hot ? 1 : .85); g.lineWidth = hot ? 2.2 : 1.4; g.stroke();
+      g.fillStyle = '#eaf4ef'; g.font = `600 ${r > 18 ? 12 : 11}px InterSub, Inter, sans-serif`; g.textAlign = 'center'; g.fillText(text, x, y + 4);
+      if (label) { g.font = '500 12px InterSub, Inter, "PingFang SC", NotoSansSCSub, sans-serif'; const w = g.measureText(label).width + 14; g.fillStyle = 'rgba(6,22,17,.72)'; g.beginPath(); g.roundRect ? g.roundRect(x - w / 2, y - r - 25, w, 19, 9.5) : g.rect(x - w / 2, y - r - 25, w, 19); g.fill(); g.fillStyle = 'rgba(234,244,239,.92)'; g.fillText(label, x, y - r - 11.5); } }
+    function draw() {
+      if (!W) return; g.setTransform(dpr, 0, 0, dpr, 0, 0); drawBase(); pts = [];
+      const now = performance.now(), ek = 1 - Math.pow(1 - Math.min(1, (now - born) / 650), 3), cityMode = view.z < 55 && !isGlobal();
+      const zr = clamp(view.z / 900, .75, 1.45), rOf = h => (2.4 + Math.sqrt(h.review_count / maxRev) * 7.5) * zr * ek;
+      if (cityMode) { const m = new Map(); shown.forEach(h => { const a = A(h), o = m.get(a.k) || m.set(a.k, {a, list: [], lo: 0, la: 0, rev: 0, s: 0}).get(a.k); o.list.push(h); o.lo += +h.longitude; o.la += +h.latitude; o.rev += h.review_count; o.s += h.avg_score * h.review_count; });
+        const groups = [...m.values()].sort((a, b) => a.list.length - b.list.length), occ = [];
+        groups.forEach(o => { const [x, y] = proj(o.lo / o.list.length, o.la / o.list.length); if (x < -40 || y < -40 || x > W + 40 || y > H + 40) return; const avg = o.rev ? o.s / o.rev : 0, r = (9 + Math.sqrt(o.list.length) * 1.9) * ek, hot = hover && hover.o === o;
+          const big = o.list.length >= 8 || groups.length < 14, lab = big && !occ.some(b => Math.abs(b[0] - x) < 70 && Math.abs(b[1] - y) < 26) ? cityName(o.a) : ''; if (lab) occ.push([x, y]);
+          drawBubble(x, y, r, scoreRGB(avg), fmtN(o.list.length), lab, hot); pts.push({x, y, r: r + 3, t: 'city', o, avg}); }); }
+      else { const cell = view.z >= ZMAX * .9 ? 0 : view.z < 200 ? 58 : 46, cells = new Map(), singles = [];
+        shown.forEach(h => { const [x, y] = proj(+h.longitude, +h.latitude); if (x < -30 || y < -30 || x > W + 30 || y > H + 30) return; const key = cell ? Math.floor(x / cell) + ',' + Math.floor(y / cell) : x.toFixed(0) + ',' + y.toFixed(0); (cells.get(key) || cells.set(key, []).get(key)).push([h, x, y]); });
+        const sorted = [...cells.values()].sort((a, b) => a.length - b.length);
+        for (const L of sorted) { if (spider && L.some(e => spider.list.includes(e[0]))) continue;
+          if (L.length === 1) { singles.push(L[0]); continue; }
+          let sx = 0, sy = 0, rev = 0, s = 0, x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; L.forEach(([h, x, y]) => { sx += x; sy += y; rev += h.review_count; s += h.avg_score * h.review_count; x0 = Math.min(x0, +h.longitude); x1 = Math.max(x1, +h.longitude); y0 = Math.min(y0, +h.latitude); y1 = Math.max(y1, +h.latitude); });
+          const x = sx / L.length, y = sy / L.length, avg = rev ? s / rev : 0, same = (x1 - x0) < 2e-4 && (y1 - y0) < 2e-4, r = (10 + Math.log2(L.length) * 2.6) * ek, o = {list: L.map(e => e[0]), same};
+          drawBubble(x, y, r, scoreRGB(avg), fmtN(L.length) + (same ? '◎' : ''), '', hover && hover.o && hover.o.list[0] === o.list[0]); pts.push({x, y, r: r + 3, t: same ? 'stack' : 'cl', o, avg}); }
+        singles.sort((a, b) => b[0].review_count - a[0].review_count).forEach(([h, x, y]) => { const hot = (hover && hover.h === h) || sel === h || linkId === h.hotel_id, r = rOf(h); drawDot(x, y, r, scoreRGB(h.avg_score), hot); pts.push({x, y, r: Math.max(6, r + 2), t: 'h', h}); });
+        if (spider) { const [cx, cy] = proj(spider.lon, spider.lat), n = spider.list.length; g.fillStyle = 'rgba(6,22,17,.55)'; g.beginPath(); g.arc(cx, cy, 30 + n * 2.4, 0, 7); g.fill();
+          spider.list.forEach((h, i) => { const ang = -Math.PI / 2 + i * 2 * Math.PI / n, rr = n > 9 ? 22 + i * 3.2 : 30 + n * 1.4, x = cx + Math.cos(n > 9 ? i * .9 : ang) * rr, y = cy + Math.sin(n > 9 ? i * .9 : ang) * rr;
+            g.strokeStyle = 'rgba(127,217,192,.45)'; g.lineWidth = 1; g.beginPath(); g.moveTo(cx, cy); g.lineTo(x, y); g.stroke(); const hot = (hover && hover.h === h) || sel === h; drawDot(x, y, 5.5, scoreRGB(h.avg_score), hot); pts.unshift({x, y, r: 9, t: 'h', h}); });
+          g.fillStyle = '#eaf4ef'; g.beginPath(); g.arc(cx, cy, 2.5, 0, 7); g.fill(); } }
+      // 选中 / 表格联动脉冲环
+      [sel, linkId && shown.find(h => h.hotel_id === linkId)].forEach((h, i) => { if (!h || cityMode) return; const [x, y] = proj(+h.longitude, +h.latitude), p = reduce ? .5 : (now / 1400) % 1;
+        g.strokeStyle = i ? `rgba(240,166,202,${.9 * (1 - p)})` : `rgba(94,234,212,${.9 * (1 - p)})`; g.lineWidth = 2; g.beginPath(); g.arc(x, y, 8 + p * 18, 0, 7); g.stroke(); });
+    }
+    const size = () => { const r = card.getBoundingClientRect(); if (!r.width) return; W = r.width; H = r.height; dpr = Math.min(devicePixelRatio, 2); cv.width = W * dpr; cv.height = H * dpr; draw(); };
     new ResizeObserver(size).observe(card);
     const hit = (x, y) => { let best = null, bd = 1e9; for (const p of pts) { const d = Math.hypot(p.x - x, p.y - y); if (d < p.r + 3 && d < bd) { bd = d; best = p; } } return best; };
-    let drag = null;
-    const touches = new Map(); let pz = 0, pz0 = 0;
-  cv.addEventListener('pointerdown', e => { armed = true; card.classList.add('armed'); touches.set(e.pointerId, [e.clientX, e.clientY]); drag = [e.clientX, e.clientY, view.lon, view.lat, false]; cv.setPointerCapture(e.pointerId);
-    if (touches.size === 2) { const [a, b] = [...touches.values()]; pz = Math.hypot(a[0] - b[0], a[1] - b[1]); pz0 = view.z; drag[4] = true; } });
-  cv.addEventListener('pointercancel', e => touches.delete(e.pointerId));
-  cv.addEventListener('pointermove', e => { if (!touches.has(e.pointerId)) return; touches.set(e.pointerId, [e.clientX, e.clientY]);
-    if (touches.size === 2 && pz) { const [a, b] = [...touches.values()]; view.z = Math.max(W / 400, Math.min(2000, pz0 * Math.hypot(a[0] - b[0], a[1] - b[1]) / pz)); e.stopImmediatePropagation(); draw(); } });
+    const showTip = (p, x, y) => { if (!p) { tip.classList.remove('on'); return; } const o = p.o;
+      tip.innerHTML = p.t === 'h' ? `<b>${esc(p.h.hotel_name)}</b><span>${cityFull(A(p.h))} · ${esc(p.h.country || '')}</span><span>评分 <strong>${f2(p.h.avg_score)}</strong> · ${fmtN(p.h.review_count)} 条评论</span><small>点击选中 · Click to select</small>`
+        : p.t === 'city' ? `<b>${cityFull(o.a)}</b><span>${fmtN(o.list.length)} 家住宿 · ${fmtN(o.rev)} 条评论</span><span>评论加权均分 <strong>${f2(p.avg)}</strong></span><small>点击放大 · Zoom in</small>`
+        : `<b>${fmtN(o.list.length)} 家住宿${p.t === 'stack' ? ' · 同一坐标' : ''}</b><span>评论加权均分 <strong>${f2(p.avg)}</strong></span><small>${p.t === 'stack' ? '点击散开 · Spiderfy' : '点击放大 · Zoom in'}</small>`;
+      tip.style.transform = `translate3d(${Math.min(W - 250, x + 16)}px,${Math.max(8, y - 24)}px,0)`; tip.classList.add('on'); };
+    let drag = null; const touches = new Map(); let pz = 0, pz0 = 0;
+    cv.addEventListener('pointerdown', e => { armed = true; card.classList.add('armed'); touches.set(e.pointerId, [e.clientX, e.clientY]); drag = [e.clientX, e.clientY, view.lon, view.lat, false]; cv.setPointerCapture(e.pointerId);
+      if (touches.size === 2) { const [a, b] = [...touches.values()]; pz = Math.hypot(a[0] - b[0], a[1] - b[1]); pz0 = view.z; drag[4] = true; } });
+    const endTouch = e => { touches.delete(e.pointerId); if (touches.size < 2) pz = 0; };
+    cv.addEventListener('pointercancel', endTouch);
     cv.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-      if (drag) { const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; if (Math.hypot(dx, dy) > 4) drag[4] = true; if (drag[4]) { view.lon = drag[2] - dx / (view.z * kx()); view.lat = drag[3] + dy / view.z; draw(); return; } }
-      const p = hit(x, y); if ((p && p.h) !== (hover && hover.h) || (p && p.cluster) !== (hover && hover.cluster)) { hover = p; draw(); }
-      cv.style.cursor = p ? 'pointer' : 'grab';
-      if (p) { tip.innerHTML = p.cluster ? `<b>${p.cluster}</b><span>${fmtN(p.n)} 家酒店 · ${fmtN(p.rev)} 条评论</span><span>评论等权均分 <strong>${f2(p.avg)}</strong> · 点击放大</span>` : `<b>${esc(p.h.hotel_name)}</b><span>${p.h.city} · ${esc(p.h.country)}</span><span>平均 <strong>${f2(p.h.avg_score)}</strong> 分 · ${fmtN(p.h.review_count)} 条评论</span><small>点击查看详情</small>`;
-        tip.style.transform = `translate3d(${Math.min(W - 230, x + 14)}px,${Math.max(8, y - 20)}px,0)`; tip.classList.add('on'); } else tip.classList.remove('on'); });
-    cv.addEventListener('pointerup', e => { const moved = drag && drag[4]; drag = null; if (moved) return; const r = cv.getBoundingClientRect(), p = hit(e.clientX - r.left, e.clientY - r.top); if (!p) return;
-      if (p.cluster) { const b = document.querySelector(`#city-switcher [data-city="${CSS.escape(p.cluster)}"]`); b ? b.click() : flyTo(fitFor(all.filter(h => h.city === p.cluster))); }
-      else if (typeof openHotel === 'function') openHotel(p.h.hotel_id); });
-    cv.addEventListener('pointerleave', () => { hover = null; tip.classList.remove('on'); draw(); });
-    cv.addEventListener('wheel', e => { if (!armed) return; e.preventDefault(); const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, [lo, la] = unproj(x, y);
-      view.z = Math.max(12, Math.min(20000, view.z * Math.exp(-e.deltaY * .0016))); const [lo2, la2] = unproj(x, y); view.lon += lo - lo2; view.lat += la - la2; draw(); }, {passive: false});
+      if (touches.has(e.pointerId)) touches.set(e.pointerId, [e.clientX, e.clientY]);
+      if (touches.size === 2 && pz) { const [a, b] = [...touches.values()]; view.z = clamp(pz0 * Math.hypot(a[0] - b[0], a[1] - b[1]) / pz, zmin(), ZMAX); spider = null; tick(); return; }
+      if (drag) { const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; if (Math.hypot(dx, dy) > 4) drag[4] = true; if (drag[4]) { anim = null; view.lon = drag[2] - dx / (view.z * kx()); view.lat = clamp(drag[3] + dy / view.z, -85, 85); tick(); tip.classList.remove('on'); return; } }
+      const p = hit(x, y), was = hover; hover = p; if ((p && (p.h || p.o)) !== (was && (was.h || was.o))) tick(); cv.style.cursor = p ? 'pointer' : 'grab'; showTip(p, x, y);
+      const id = p && p.h ? p.h.hotel_id : null; document.querySelectorAll('#hotel-rows tr.hm-row-hl').forEach(t => t.classList.remove('hm-row-hl')); if (id) rowOf(id)?.closest('tr')?.classList.add('hm-row-hl'); });
+    cv.addEventListener('pointerup', e => { endTouch(e); const moved = drag && drag[4]; drag = null; if (moved) return; const r = cv.getBoundingClientRect(), p = hit(e.clientX - r.left, e.clientY - r.top);
+      if (!p) { if (spider) { spider = null; tick(); } return; }
+      if (p.t === 'h') select(p.h);
+      else if (p.t === 'stack' || (p.t === 'cl' && view.z >= ZMAX * .85)) { const h0 = p.o.list[0]; spider = {lon: +h0.longitude, lat: +h0.latitude, list: p.o.list.slice(0, 24)}; tick(); }
+      else { const f = fitFor(p.o.list); flyTo({...f, z: Math.max(f.z, view.z * 2.2)}); } });
+    cv.addEventListener('pointerleave', () => { hover = null; tip.classList.remove('on'); document.querySelectorAll('#hotel-rows tr.hm-row-hl').forEach(t => t.classList.remove('hm-row-hl')); tick(); });
+    cv.addEventListener('wheel', e => { if (!armed) return; e.preventDefault(); anim = null; spider = null; const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, [lo, la] = unproj(x, y);
+      view.z = clamp(view.z * Math.exp(-e.deltaY * .0016), zmin(), ZMAX); const [lo2, la2] = unproj(x, y); view.lon += lo - lo2; view.lat += la - la2; tick(); }, {passive: false});
     document.addEventListener('pointerdown', e => { if (!card.contains(e.target)) { armed = false; card.classList.remove('armed'); } });
-    sec.querySelector('.map-reset').addEventListener('click', () => { const b = document.querySelector('#city-switcher [data-city="全部"]'); b && curCity() !== '全部' ? b.click() : flyTo({...EU}); });
-    let lastCity = curCity(), tm = 0;
-    new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(() => { const changed = curCity() !== lastCity; lastCity = curCity(); refresh(changed); }, 60); }).observe($id('hotel-rows'), {childList: true});
-    new MutationObserver(() => draw()).observe(document.body, {attributes: true, attributeFilter: ['class']});
-    size(); refresh(curCity() !== '全部');
-    window.dreamMap = {count: () => all.length, shown: () => shown.length, view: () => ({...view}), points: () => pts.map(p => ({x: p.x, y: p.y, id: p.h?.hotel_id, name: p.h?.hotel_name, cluster: p.cluster})), rect: () => cv.getBoundingClientRect()};
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && armed) { armed = false; card.classList.remove('armed'); spider = null; sel = null; renderSel(); tick(); } });
+    sec.querySelector('.map-reset').addEventListener('click', () => { focus = null; sel = null; renderSel(); refresh(true); });
+    /* 表格 → 地图：悬停行高亮落点；行内 ◎ 按钮飞到该酒店 */
+    const rows = $id('hotel-rows'), byId = new Map(all.map(h => [h.hotel_id, h]));
+    const decorate = () => rows.querySelectorAll('.hotel-name-button').forEach(b => { if (b.parentNode.querySelector('.hm-pin') || !byId.has(b.dataset.hotelId)) return; const p = document.createElement('button'); p.type = 'button'; p.className = 'hm-pin'; p.dataset.pin = b.dataset.hotelId; p.title = '在地图上定位 · Locate on map'; p.setAttribute('aria-label', '在地图上定位'); p.textContent = '◎'; b.after(p); });
+    rows.addEventListener('mouseover', e => { const b = e.target.closest('tr')?.querySelector('[data-hotel-id]'); const id = b && byId.has(b.dataset.hotelId) ? b.dataset.hotelId : null; if (id !== linkId) { linkId = id; tick(); } });
+    rows.addEventListener('mouseleave', () => { linkId = null; tick(); });
+    rows.addEventListener('click', e => { const p = e.target.closest('.hm-pin'); if (!p) return; e.stopPropagation(); const h = byId.get(p.dataset.pin); if (!h) return;
+      sec.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'}); if (focus && A(h).k !== focus) { focus = null; refresh(false); } flyTo({lon: +h.longitude, lat: +h.latitude, z: Math.max(view.z, ZMAX * .45)}); select(h); });
+    let lastCity = curCity(), tm = 0, pendFly = false;
+    new MutationObserver(() => { decorate(); clearTimeout(tm); tm = setTimeout(() => { const changed = curCity() !== lastCity; lastCity = curCity(); if (changed) { focus = null; sel = null; renderSel(); if (relax()) { pendFly = true; return; } } refresh(changed || pendFly); pendFly = false; }, 60); }).observe(rows, {childList: true});
+    new MutationObserver(() => tick()).observe(document.body, {attributes: true, attributeFilter: ['class']});
+    size(); decorate(); if (relax()) pendFly = curCity() !== '全部'; else refresh(curCity() !== '全部');
+    window.dreamMap = {count: () => all.length, shown: () => shown.length, view: () => ({...view}), points: () => pts.map(p => ({x: p.x, y: p.y, id: p.h?.hotel_id, name: p.h?.hotel_name, cluster: p.o ? (p.o.a ? cityName(p.o.a) : p.o.list.length) : undefined, t: p.t})), rect: () => cv.getBoundingClientRect(),
+      focus: k => { focus = k || null; refresh(true); }, chips: () => [...chipsEl.querySelectorAll('button')].map(b => [b.dataset.k, b.textContent]), fly: v => flyTo(v), select: id => { const h = byId.get(id); if (h) select(h); }, spider: () => spider && spider.list.length};
   }
 
   /* ---------- 2. 答辩问答练习卡（讲稿原文） ---------- */
@@ -3290,7 +3434,7 @@ window.TourismComparison.init();
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75)); renderer.outputEncoding = THREE.sRGBEncoding;
   const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(36, 1, .05, 100), loader = new THREE.TextureLoader();
   const tex = k => { const t = loader.load(TEX[k]); t.encoding = k === 'day' || k === 'lights' ? THREE.sRGBEncoding : THREE.LinearEncoding; t.anisotropy = 4; return t; };
-  const sun = new THREE.DirectionalLight(0xffffff, 1.05); scene.add(sun, new THREE.AmbientLight(0xb8c4ff, .55));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.05), amb = new THREE.AmbientLight(0xb8c4ff, .55); scene.add(sun, amb);
   const globe = new THREE.Group(); scene.add(globe);
   // v15：真实地形——GEBCO（NASA Visible Earth，公有领域）高程做顶点位移（约 ×5 夸张）+ 由高程推导的法线贴图 + 海底深度着色 + 云影
   const DS = .0075, TOPO = tex('topo'), CLOUD = tex('clouds');
@@ -3344,6 +3488,11 @@ window.TourismComparison.init();
   const bpos = []; WORLD.geo.forEach(c => c.r.forEach(r => { if (r.length < 6) return; for (let i = 0; i < r.length; i += 2) { const j = (i + 2) % r.length, a = surf(r[i + 1], r[i], .0045), b = surf(r[j + 1], r[j], .0045); bpos.push(a.x, a.y, a.z, b.x, b.y, b.z); } }));
   const bgeo = new THREE.BufferGeometry(); bgeo.setAttribute('position', new THREE.Float32BufferAttribute(bpos, 3));
   const borders = new THREE.LineSegments(bgeo, new THREE.LineBasicMaterial({color: 0xffffff, transparent: true, opacity: .32})); globe.add(borders);
+  // v21：城市级缩放时显示真实住宿落点（dws_hotel 坐标，单个 Points 绘制，近景才可见）
+  const hotelPts = (() => { const H = (payload.tables.dws_hotel || []).filter(h => h.latitude != null && h.longitude != null); if (!H.length) return null; const pos = new Float32Array(H.length * 3), col = new Float32Array(H.length * 3);
+    H.forEach((h, i) => { const p = surf(+h.latitude, +h.longitude, .004); pos[i * 3] = p.x; pos[i * 3 + 1] = p.y; pos[i * 3 + 2] = p.z; const t = Math.max(0, Math.min(1, (h.avg_score - 6.5) / 3)); col[i * 3] = .37 + .62 * t; col[i * 3 + 1] = .5 + .42 * Math.min(1, t * 2); col[i * 3 + 2] = .47 + .36 * Math.min(1, t * 2) - .29 * Math.max(0, t * 2 - 1); });
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const m = new THREE.Points(g, new THREE.PointsMaterial({size: 3.2, sizeAttenuation: false, vertexColors: true, transparent: true, opacity: 0, depthWrite: false})); m.visible = false; m.renderOrder = 4; globe.add(m); return m; })();
   const center = iso => { const r = BY[iso]; if (r && r.latitude != null) return [r.latitude, r.longitude]; const c = WORLD.byId[iso]; if (!c) return null; return [(c.main[1] + c.main[3]) / 2, (c.main[0] + c.main[2]) / 2]; };
   // 年度数据：评论（ads_country_month 聚合到年）+ 入境游客（dws_tourism_country_year）
   const YR = {}; (GT.ads_country_month || []).forEach(r => { const iso = isoOfZh[r.scope]; if (!iso || CONTS.includes(r.scope)) return; const y = +r.review_month.slice(0, 4); ((YR[y] = YR[y] || {})[iso] = YR[y][iso] || {n: 0, s: 0}); YR[y][iso].n += r.review_count; YR[y][iso].s += r.avg_score * r.review_count; });
@@ -3507,13 +3656,14 @@ window.TourismComparison.init();
       if (spin && !dragging && !sel && now - idleT > 2500) { camS.lon -= dt * .004; busy = true; } }
     cam.position.copy(camPos()); cam.lookAt(0, 0, 0); refLOD();
     if (layer.night) { if (now - subT > 10000) { subT = now; updSub(); } sunDir.copy(SUBSOLAR).applyQuaternion(globe.quaternion); } else sunDir.copy(ll(camS.lat + 32, camS.lon - 48, 1)).normalize();
+    { const nk = night.material.uniforms.k.value; amb.intensity = .55 - .27 * nk; sun.intensity = 1.05 + .2 * nk; } /* v21：真实昼夜开启时压低环境光，夜面更暗、晨昏线更清晰（太阳方向始终取真实直射点，固定在地理坐标上） */
     sun.position.copy(sunDir).multiplyScalar(5); halo.position.set(0, 0, 0);
     if (clouds.visible) { clouds.rotation.y += dt * .000015; busy = true; }
     shadeU.cloudK.value = clouds.visible ? 1 : 0; { const sl = sunDir.clone().applyQuaternion(globe.quaternion.clone().invert()); shadeU.cloudOff.value.set(-clouds.rotation.y / (2 * Math.PI) - sl.z * .0009, -sl.y * .0012); }
     stepDetail(busy || !!fly || dragging);
     if (frame % 3 === 0) { space.style.setProperty('--px', (-camS.lon * 5).toFixed(1) + 'px'); space.style.setProperty('--py', (camS.lat * 3).toFixed(1) + 'px');
       const sp = sunDir.clone().multiplyScalar(30).project(cam), W = canvas.clientWidth || 1, H = canvas.clientHeight || 1; space.style.setProperty('--gx', Math.max(-20, Math.min(120, (sp.x + 1) / 2 * 100)).toFixed(1) + '%'); space.style.setProperty('--gy', Math.max(-20, Math.min(120, (1 - sp.y) / 2 * 100)).toFixed(1) + '%'); space.style.setProperty('--gk', sp.z < 1 ? 1 : 0); }
-    { const d = camS.dist, cl = x => Math.max(0, Math.min(1, x)); cities.material.size = .0035 + .0105 * cl((d - 1.15) / 1.6); spikes.visible = tops.visible = layer.spikes && d > 1.42;
+    { const d = camS.dist, cl = x => Math.max(0, Math.min(1, x)); if (hotelPts) { const hk = cl((1.72 - d) / .32); hotelPts.material.opacity = .95 * hk; hotelPts.visible = hk > .01; } cities.material.size = .0035 + .0105 * cl((d - 1.15) / 1.6); spikes.visible = tops.visible = layer.spikes && d > 1.42;
       chor.material.opacity = (document.body.classList.contains('theme-day') ? .85 : 1) * (.18 + .82 * cl((d - 1.25) / 1.1)); }
     night.material.uniforms.k.value += ((layer.night ? 1 : 0) - night.material.uniforms.k.value) * .1; if (Math.abs((layer.night ? 1 : 0) - night.material.uniforms.k.value) > .01) busy = true;
     if (layer.spikes && stepSpikes(RM ? 1 : .12)) busy = true; if (stepArcs(now)) busy = true;
@@ -3547,7 +3697,7 @@ window.TourismComparison.init();
   const buildNE10 = () => { const N = window.__NE10; if (!N) return; const pos = [];
     for (const [key, up] of [['coast', .0045], ['border', .0048]]) N[key].forEach(q => { for (let i = 0; i + 3 < q.length; i += 2) { const a = surf(q[i + 1] / 200, q[i] / 200, up), b = surf(q[i + 3] / 200, q[i + 2] / 200, up); pos.push(a.x, a.y, a.z, b.x, b.y, b.z); } });
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-    ne10 = new THREE.LineSegments(g, new THREE.LineBasicMaterial({color: document.body.classList.contains('theme-day') ? 0x3b3566 : 0xffffff, transparent: true, opacity: .55})); ne10.renderOrder = 3; globe.add(ne10); window.__NE10 = null; wake(); };
+    ne10 = new THREE.LineSegments(g, new THREE.LineBasicMaterial({color: document.body.classList.contains('theme-day') ? 0x3b3566 : 0xffffff, transparent: true, opacity: .55})); ne10.renderOrder = 3; globe.add(ne10); window.__NE10_KEEP = N; window.__NE10 = null; wake(); };
   function stepDetail(moving) { const now = performance.now();
     // 自适应画质：拖动/飞行时降低像素比，静止 250ms 后恢复
     const full = Math.min(devicePixelRatio, 1.75), low = Math.min(full, 1); if (moving) { qT = now; if (!lowQ && full > low) { lowQ = true; renderer.setPixelRatio(low); resize(); } } else if (lowQ && now - qT > 250) { lowQ = false; renderer.setPixelRatio(full); resize(); wake(); }
