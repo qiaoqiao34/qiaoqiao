@@ -991,6 +991,26 @@ body.boot-handoff #boot .boot-tag{animation-delay:.05s}body.boot-handoff #boot .
 body.boot-handoff #boot .boot-stars{opacity:0;transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
 body.boot-handoff #boot{background:transparent}
 @media (prefers-reduced-motion:reduce){#boot{transition:opacity .4s ease,visibility 0s linear .45s}#boot .boot-bar::after{animation:none;display:none}body.boot-handoff #boot .boot-inner>*{animation:none;opacity:0}}
+
+/* ==== v20 答辩演示 Defense Demo ==== */
+.sg-demo-btn{position:absolute;right:clamp(14px,1.4vw,26px);bottom:clamp(86px,11vh,120px);z-index:7;display:flex;align-items:center;gap:.6em;padding:.55em 1.05em;border-radius:999px;color:var(--ink);font:inherit;font-size:.92em;letter-spacing:.08em;cursor:pointer;border:1px solid rgba(94,234,212,.28);background:rgba(14,42,34,.42);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);transition:background .3s,border-color .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.sg-demo-btn small{font-size:.72em;letter-spacing:.2em;opacity:.55;text-transform:uppercase}
+.sg-demo-btn i{width:0;height:0;border-left:7px solid #5eead4;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;filter:drop-shadow(0 0 6px rgba(94,234,212,.8))}
+.sg-demo-btn:hover{background:rgba(14,42,34,.65);border-color:rgba(94,234,212,.55);transform:translateY(-1px)}
+.sg-demo-btn[aria-pressed=true] i{width:8px;height:8px;border:0;background:#5eead4;border-radius:2px}
+#stage.booting .sg-demo-btn{opacity:0;filter:blur(12px)}.sg-demo-btn{transition:opacity .7s ease 1s,filter .7s ease 1s,background .3s,border-color .3s,transform .3s}
+.sg-demo{position:absolute;left:50%;bottom:clamp(90px,14vh,150px);transform:translateX(-50%);z-index:8;min-width:min(440px,86vw);max-width:min(620px,92vw);padding:1.15em 1.5em 1.2em;border-radius:20px;overflow:hidden;
+ background:linear-gradient(160deg,rgba(14,42,34,.72),rgba(6,20,16,.6));border:1px solid rgba(94,234,212,.22);box-shadow:0 30px 80px -30px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.08);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);color:#eaf4ef}
+.sg-demo.in{animation:sgDemo .9s cubic-bezier(.16,1,.3,1) both}@keyframes sgDemo{from{opacity:0;filter:blur(10px);transform:translate(-50%,14px)}}
+.sg-demo-k{display:flex;gap:.9em;align-items:center;font-size:.72em;letter-spacing:.32em;text-transform:uppercase;color:#7fd9c0}.sg-demo-k span{color:rgba(234,244,239,.45);letter-spacing:.18em}
+.sg-demo-t{margin:.35em 0 .7em;font-size:1.65em;font-weight:600;letter-spacing:.04em}.sg-demo-t em{margin-left:.5em;font-style:normal;font-weight:300;font-size:.6em;letter-spacing:.12em;color:rgba(234,244,239,.55)}
+.sg-demo-s{display:flex;gap:2.2em;flex-wrap:wrap}.sg-demo-s b{display:block;font-size:1.35em;font-weight:300;font-variant-numeric:tabular-nums;color:#f2faf6}.sg-demo-s span{font-size:.78em;letter-spacing:.06em;color:rgba(200,225,215,.62)}
+.sg-demo-f{display:flex;justify-content:space-between;align-items:center;margin-top:.9em;font-size:.72em;color:rgba(200,225,215,.45)}.sg-demo-f code{color:#7fd9c0;opacity:.8}
+.sg-demo-bar{position:absolute;left:0;bottom:0;height:2px;width:100%;transform-origin:0 50%;background:linear-gradient(90deg,#5eead4,#f0a6ca);animation:sgDemoBar 6.2s linear both}@keyframes sgDemoBar{from{transform:scaleX(0)}}
+#stage.demo-on .sg-side,#stage.demo-on .sg-src,#stage.demo-on .sg-kpi,#stage.demo-on .sg-bottom{opacity:.28;filter:blur(2px);transition:opacity .8s ease,filter .8s ease}
+@media (prefers-reduced-motion:reduce){.sg-demo.in,.sg-demo-bar{animation:none}}
+
+body.boot-done #boot.js-fade{opacity:1;visibility:visible}/* v20：交接淡化由 boot.js 逐帧驱动，与相机同一时钟 */
 </style></head><body>
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></symbol><symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="i-visitors" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5"/></symbol><symbol id="i-reviews" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></symbol><symbol id="i-hotels" viewBox="0 0 24 24"><path d="M5 21V3h14v18M3 21h18M10 21v-5h4v5M9 7h1M14 7h1M9 11h1M14 11h1"/></symbol><symbol id="i-methods" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9L12 3Z"/></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10M15 5h6v6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/></symbol></defs></svg><div id="boot" role="status" aria-label="页面加载中"><canvas class="boot-canvas" aria-hidden="true"></canvas><div class="boot-stars" aria-hidden="true"></div><div class="boot-orbit" aria-hidden="true"><i class="o1"></i><i class="o2"></i></div><div class="boot-inner"><div class="boot-globe" aria-hidden="true"><i class="mg"></i><i class="eq"></i></div><div class="boot-name">旅析<small>TOURISM INSIGHTS</small></div><div class="boot-tag">以真实评论，观察旅居体验</div><div class="boot-bar"><i></i></div><div class="boot-text" id="boot-text">正在加载页面…</div><div class="boot-stats"><span><b>144.9万</b>评论</span><span><b>2,670</b>城市</span><span><b>16,174</b>住宿</span></div><div class="boot-cap" aria-hidden="true">Hadoop · Hive · Spark</div></div></div><script>(function(){function h(){var b=document.getElementById("boot");if(!b||b.dataset.done)return;b.dataset.done="1";document.body.classList.add("boot-done");setTimeout(function(){var x=document.getElementById("boot");if(x)x.remove();},1500);}function m(t){var e=document.getElementById("boot-text");if(!e||!t)return;e.classList.add("swap");setTimeout(function(){e.textContent=t;e.classList.remove("swap");},180);}var P={html:.12,tex:.3,js:.42,data:.58,globe:.74,stage:.92,done:1},cur=.04;function pg(k){var v=P[k]||0,b=document.getElementById("boot");if(!b||v<=cur)return;cur=v;b.style.setProperty("--p",v);}window.__bootProgress=pg;pg("html");window.addEventListener("load",function(){setTimeout(function(){if(!window.__bootCtl)h();},800);});setTimeout(h,20000);window.__hideBoot=h;window.__bootMsg=m;})();</script><a class="skip-link" href="#overview">跳至主要内容</a>
 <aside><a class="brand" href="#overview" aria-label="旅析首页"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="brand-name">旅<span>析</span><small>TOURISM INSIGHTS</small></span></a><div class="nav-label">分析导航</div><nav aria-label="分析章节"><a href="#overview" aria-label="数据总览"><svg class="icon" aria-hidden="true"><use href="#i-overview"/></svg><span class="nav-text">数据总览</span><span class="nav-mobile-text">总览</span><span class="nav-index">01</span></a><a href="#visitors" aria-label="游客与出行"><svg class="icon" aria-hidden="true"><use href="#i-visitors"/></svg><span class="nav-text">游客与出行</span><span class="nav-mobile-text">出行</span><span class="nav-index">02</span></a><a href="#reviews" aria-label="评价洞察"><svg class="icon" aria-hidden="true"><use href="#i-reviews"/></svg><span class="nav-text">评价洞察</span><span class="nav-mobile-text">评价</span><span class="nav-index">03</span></a><a href="#hotels" aria-label="酒店探索"><svg class="icon" aria-hidden="true"><use href="#i-hotels"/></svg><span class="nav-text">酒店探索</span><span class="nav-mobile-text">酒店</span><span class="nav-index">04</span></a><a href="#methods" aria-label="数据与方法"><svg class="icon" aria-hidden="true"><use href="#i-methods"/></svg><span class="nav-text">数据与方法</span><span class="nav-mobile-text">方法</span><span class="nav-index">05</span></a></nav><div class="sidefoot"><div class="side-project"><span class="live-dot"></span><strong>个人毕业设计</strong></div><p>大数据方向 · 旅游住宿分析</p><div class="side-line"></div><p>Hadoop / Spark / Python<br>以真实评论，观察旅居体验</p><div class="side-edition">DATA EDITION &nbsp; 2015—2017</div></div></aside>
@@ -1044,21 +1064,23 @@ const tex=n=>{const t=L.load((window.__EARTH_TEX&&__EARTH_TEX[n])||(window.BOOT_
 const sun=new THREE.Vector3(.95,.42,-.05).normalize(),sunLocal=new THREE.Vector3(),_q=new THREE.Quaternion();let sunAt=0;
 const llS=(la,lo)=>{la*=Math.PI/180;lo=(lo+180)*Math.PI/180;return new THREE.Vector3(-Math.cos(la)*Math.cos(lo),Math.sin(la),Math.cos(la)*Math.sin(lo))};
 const updSun=()=>{const f=window.subsolarPoint;if(f){const[a,b]=f();sunLocal.copy(llS(a,b))}else sunLocal.set(.95,.42,-.05).normalize()};updSun();
-const earthMat=new THREE.ShaderMaterial({uniforms:{day:{value:tex('day')},night:{value:tex('lights')},clouds:{value:tex('clouds')},sun:{value:sun},t:{value:0},hk:{value:0}},
+const earthMat=new THREE.ShaderMaterial({uniforms:{day:{value:tex('day')},night:{value:tex('lights')},clouds:{value:tex('clouds')},sun:{value:sun},t:{value:0},hk:{value:0},ck:{value:0}},
 vertexShader:`varying vec2 vU;varying vec3 vN;varying vec3 vV;void main(){vU=uv;vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vV=normalize(cameraPosition-w.xyz);gl_Position=projectionMatrix*viewMatrix*w;}`,
-fragmentShader:`uniform sampler2D day,night,clouds;uniform vec3 sun;uniform float t,hk;varying vec2 vU;varying vec3 vN;varying vec3 vV;
+fragmentShader:`uniform sampler2D day,night,clouds;uniform vec3 sun;uniform float t,hk,ck;varying vec2 vU;varying vec3 vN;varying vec3 vV;
 void main(){float d=dot(vN,sun);float k=smoothstep(-.12,.38,d);vec3 dc=texture2D(day,vU).rgb;
-float cl=texture2D(clouds,vU+vec2(t*.004,0.)).r;dc=mix(dc,vec3(.95),cl*.55);
+float cl=texture2D(clouds,vU+vec2(t*.004,0.)).r;dc=mix(dc,vec3(.95),cl*.55*(1.-hk));float cl2=texture2D(clouds,vU).r;
 vec3 nc=texture2D(night,vU).rgb;float lum=max(max(nc.r,nc.g),nc.b);lum=smoothstep(.12,.85,lum);nc=vec3(1.,.78,.45)*pow(lum,1.3)*2.4*(1.-cl*.7);
 dc=mix(dc*vec3(.92,1.02,.98),dc*vec3(1.02,.99,1.),hk);dc=pow(dc,vec3(mix(1.12,.95,hk)))*mix(.92,1.08,hk);vec3 col=mix(nc+vec3(.010,.028,.024)+dc*vec3(.01,.03,.028),dc*(.12+.9*max(d,0.)),k);
 vec3 h=normalize(sun+vV);float sp=pow(max(dot(vN,h),0.),40.)*(1.-cl)*.35*k;col+=vec3(.7,.95,.9)*sp;
 float f=pow(1.-max(dot(vN,vV),0.),3.);col+=mix(vec3(.3,.9,.8),vec3(.62,.55,1.),hk)*f*(.12+.9*k);
-gl_FragColor=vec4(col,1.);}`});
+vec3 dl=mix(pow(texture2D(day,vU).rgb,vec3(2.2)),vec3(1.),cl2*.85*ck);vec3 ph=pow(dl*(vec3(.72,.77,1.)*.55+vec3(1.05)*max(d,0.)),vec3(1./2.2));
+float nn=smoothstep(.12,-.22,d);ph=mix(ph,texture2D(night,vU).rgb*vec3(1.,.85,.6)*1.6,nn*.78);
+gl_FragColor=vec4(mix(col,ph,hk),1.);}`});
 const earth=new THREE.Mesh(new THREE.SphereGeometry(1,128,96),earthMat);
 const tilt=new THREE.Group();tilt.rotation.z=.41;tilt.rotation.x=.18;tilt.add(earth);S.add(tilt);
 const atm=new THREE.Mesh(new THREE.SphereGeometry(1.045,96,64),new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{sun:{value:sun},hk:{value:0}},
 vertexShader:`varying vec3 vN;varying vec3 vP;void main(){vN=normalize(mat3(modelMatrix)*normal);vP=(modelMatrix*vec4(position,1.)).xyz;gl_Position=projectionMatrix*viewMatrix*vec4(vP,1.);}`,
-fragmentShader:`uniform vec3 sun;uniform float hk;varying vec3 vN;varying vec3 vP;void main(){vec3 v=normalize(cameraPosition-vP);float i=pow(clamp(.62+dot(vN,v)*1.05,0.,1.),6.);float s=.12+1.1*smoothstep(-.3,.7,dot(-vN,sun));gl_FragColor=vec4(mix(mix(vec3(.25,.95,.8),vec3(.55,.75,1.),.35),vec3(.62,.5,1.),hk)*i*mix(s,1.,hk*.6)*(1.25+hk*.5),1.);}`}));
+fragmentShader:`uniform vec3 sun;uniform float hk;varying vec3 vN;varying vec3 vP;void main(){vec3 v=normalize(cameraPosition-vP);float i=pow(clamp(.62+dot(vN,v)*1.05,0.,1.),6.);float s=.12+1.1*smoothstep(-.3,.7,dot(-vN,sun));gl_FragColor=vec4(mix(mix(vec3(.25,.95,.8),vec3(.55,.75,1.),.35),vec3(.62,.5,1.),hk)*i*mix(s,1.,hk*.6)*(1.25+hk*.5)*(1.-hk),1.);}`}));
 S.add(atm);
 // stars
 const sky=new THREE.Mesh(new THREE.SphereGeometry(90,48,32),new THREE.MeshBasicMaterial({map:tex('stars'),side:THREE.BackSide,color:0x6f8a84}));S.add(sky);
@@ -1086,7 +1108,22 @@ let t0=performance.now(),running=true,hand=null,arcK=1;
 const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,eio=x=>x<.5?16*x*x*x*x*x:1-Math.pow(-2*x+2,5)/2;
 const qE=new THREE.Quaternion(),M4=new THREE.Matrix4(),O=new THREE.Vector3();
 /* 交接：把加载屏地球的相机平滑飞到与大屏地球完全一致的机位（同经纬、同距离、同 FOV），随后由大屏接管 */
-window.__bootHandoff=(v,ms)=>{if(hand)return;tilt.updateMatrixWorld(true);earth.getWorldQuaternion(qE);
+let X=null;const TS=+(new URLSearchParams(location.search).get('bootslow')||1);/* 仅调试：?bootslow=N 放慢交接 N 倍 */
+function buildX(L){X={};try{
+ if(L&&L.bpos){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(L.bpos,3));X.bm=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:0,depthWrite:false});earth.add(new THREE.LineSegments(g,X.bm))}
+ if(L&&L.chor){X.cm=new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(L.chor),transparent:true,opacity:0,depthWrite:false});earth.add(new THREE.Mesh(new THREE.SphereGeometry(1.0018,128,96),X.cm));X.co=L.chorOp?L.chorOp():1}
+ X.am=new THREE.ShaderMaterial({side:THREE.BackSide,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,uniforms:{col:{value:new THREE.Color(.62,.55,1)},k:{value:0}},
+  vertexShader:'varying vec3 vN; void main(){ vN=normalize(normalMatrix*normal); gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }',
+  fragmentShader:'uniform vec3 col; uniform float k; varying vec3 vN; void main(){ float i=pow(.72-dot(vN,vec3(0,0,1.)),3.2); gl_FragColor=vec4(col,1.)*i*1.4*k; }'});S.add(new THREE.Mesh(new THREE.SphereGeometry(1.16,64,48),X.am));
+ X.sm=new THREE.ShaderMaterial({transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,uniforms:{sunDir:{value:sun},k:{value:0}},
+  vertexShader:'varying vec3 vW; varying vec3 vV; void main(){ vec4 w=modelMatrix*vec4(position,1.); vW=normalize(w.xyz); vV=normalize(cameraPosition-w.xyz); gl_Position=projectionMatrix*viewMatrix*w; }',
+  fragmentShader:'uniform vec3 sunDir; uniform float k; varying vec3 vW; varying vec3 vV; void main(){ float mu=dot(vW,vV); float rim=pow(1.-max(mu,0.),4.); float sd=dot(vW,sunDir); float day=smoothstep(-.25,.35,sd); vec3 ray=vec3(.30,.55,1.)*(.35+.65*day); vec3 dusk=vec3(1.,.55,.32)*exp(-pow(sd*5.,2.))*.9; float ph=.75*(1.+pow(max(dot(-vV,sunDir),0.),2.)); vec3 c=(ray*ph+dusk)*rim*k; gl_FragColor=vec4(c,max(c.r,max(c.g,c.b)));}'});
+ S.add(new THREE.Mesh(new THREE.SphereGeometry(1.022,128,96),X.sm));
+ const gc=document.createElement('canvas');gc.width=gc.height=128;const g2=gc.getContext('2d'),gr=g2.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.25,'rgba(255,240,255,.55)');gr.addColorStop(1,'rgba(255,255,255,0)');g2.fillStyle=gr;g2.fillRect(0,0,128,128);
+ X.hm=new THREE.SpriteMaterial({map:new THREE.CanvasTexture(gc),color:0x9d8cff,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending});const hs=new THREE.Sprite(X.hm);hs.scale.set(3.4,3.4,1);hs.renderOrder=-1;S.add(hs);
+}catch(e){}}
+function stepX(k){if(!X)return;const s=k*k*(3-2*k);if(X.bm)X.bm.opacity=.32*s;if(X.cm)X.cm.opacity=X.co*s;X.am.uniforms.k.value=s;X.sm.uniforms.k.value=s;X.hm.opacity=.32*s}
+window.__bootHandoff=(v,ms)=>{if(hand)return;buildX(v.layers);earthMat.uniforms.ck.value=v.layers&&v.layers.clouds?1:0;tilt.updateMatrixWorld(true);earth.getWorldQuaternion(qE);
  const toPos=llS(v.lat,v.lon).multiplyScalar(v.dist).applyQuaternion(qE),up=new THREE.Vector3(0,1,0).applyQuaternion(qE);
  M4.lookAt(toPos,O,up);const toQ=new THREE.Quaternion().setFromRotationMatrix(M4);
  hand={t:performance.now(),ms:RM?1:ms,p0:C.position.clone(),q0:C.quaternion.clone(),f0:C.fov,p1:toPos,q1:toQ,f1:v.fov||36,r0:C.position.length(),r1:v.dist}};
@@ -1095,13 +1132,13 @@ if(loaded>=3&&!boot.classList.contains('gl-ready')){boot.classList.add('gl-ready
 earthMat.uniforms.t.value=t;arcMats.forEach(m=>m.uniforms.t.value=t);
 if(!hand&&!RM){earth.rotation.y=-2.6+t*.03;stars.rotation.y=t*.004}
 if(now-sunAt>5000){sunAt=now;updSun()}tilt.updateMatrixWorld(true);earth.getWorldQuaternion(_q);sun.copy(sunLocal).applyQuaternion(_q);
-if(hand){const u=Math.min(1,(now-hand.t)/hand.ms),k=eio(u);
+if(hand){const u=Math.min(1,(now-hand.t)/hand.ms),k=ease(u);
  const d0=hand.p0.clone().normalize(),d1=hand.p1.clone().normalize(),qd=new THREE.Quaternion().setFromUnitVectors(d0,d1),qi=new THREE.Quaternion().slerp(qd,k);
  C.position.copy(d0.applyQuaternion(qi).multiplyScalar(hand.r0+(hand.r1-hand.r0)*k));
  C.quaternion.copy(hand.q0).slerp(hand.q1,k);C.fov=hand.f0+(hand.f1-hand.f0)*k;C.updateProjectionMatrix();
- arcK=1-Math.min(1,u*2.2);earthMat.uniforms.hk.value=atm.material.uniforms.hk.value=k;arcMats.forEach(m=>m.visible=arcK>0.01);
- if(u>=1&&!hand.end){hand.end=now}
- if(hand.end&&now-hand.end>1400){running=false;R.dispose();R.forceContextLoss&&R.forceContextLoss();return}}
+ arcK=1-Math.min(1,u*2.2);earthMat.uniforms.hk.value=atm.material.uniforms.hk.value=k;stepX(k);arcMats.forEach(m=>m.visible=arcK>0.01);
+ if(u>=1&&!hand.end){hand.end=now;boot.classList.add('js-fade');boot.style.transition='none'}
+ if(hand.end){const f=Math.min(1,(now-hand.end)/(RM?1:950*TS));boot.style.opacity=String(1-eio(f));if(f>=1){boot.style.visibility='hidden';running=false;R.dispose();R.forceContextLoss&&R.forceContextLoss();return}}}
 else{const intro=RM?1:ease(Math.min(t/3.2,1));const d=cam.d+(1-intro)*.9,px=cam.x,py=cam.y;
 C.position.set(px+(RM?0:mx*.06),py-(RM?0:my*.04),d);C.lookAt(px,py,0)}
 R.render(S,C);requestAnimationFrame(frame)}
@@ -3619,6 +3656,43 @@ window.TourismComparison.init();
       [() => openDeck('arch'), 'HDFS 存储 → Hive ODS/DWD/DWS/ADS 四层 → Spark 计算 → MySQL 结果库 → Python 可视化。'], [() => { closeDeck(); reset(); }, '讲解结束 · 按 ? 查看全部快捷键。']];
     let i = 0; const next = () => { if (!touring || i >= S.length) { touring = 0; setTimeout(() => cap.hidden = true, 2500); return; } S[i][0](); cap.textContent = `${i + 1}/${S.length}  ${S[i][1]}`; cap.hidden = false; cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in'); i++; setTimeout(next, 4800); }; next(); }
   document.getElementById('present-mode')?.addEventListener('click', e => { e.stopImmediatePropagation(); tour(); }, true);
+  /* ---- 13b. 答辩演示 Defense Demo（按 A / 点击「答辩演示」）：全球 → 大洲 → 国家 → 城市 → 数仓管道；全部数字取自页面已载入的真实数仓结果 ---- */
+  const demo = (() => {
+    const FT = RM ? 1 : 2600, CEN = {'欧洲': 'Europe', '亚洲': 'Asia', '北美洲': 'North America', '南美洲': 'South America', '非洲': 'Africa', '大洋洲': 'Oceania'};
+    const box = document.createElement('div'); box.className = 'sg-demo glass'; box.hidden = true; box.setAttribute('role', 'status'); box.setAttribute('aria-live', 'polite'); st.appendChild(box);
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'sg-demo-btn glass'; btn.title = '答辩演示 Defense Demo（A 开始 · Esc 退出）'; btn.innerHTML = '<i></i>答辩演示<small>Demo · A</small>'; st.appendChild(btn);
+    let on = 0, timer = 0, i = 0, stops = [];
+    const plan = () => {
+      const G = row('全球') || {}, conts = Object.keys(CEN).map(row).filter(Boolean).sort((a, b) => b.review_count - a.review_count), C = conts[0];
+      const inC = ALL.filter(r => r.continent === CEN[C.scope] && r.latitude != null), w = inC.reduce((s, r) => s + r.review_count, 0) || 1;
+      const clat = inC.reduce((s, r) => s + r.latitude * r.review_count, 0) / w, clon = inC.reduce((s, r) => s + r.longitude * r.review_count, 0) / w;
+      const K = [...inC].sort((a, b) => b.review_count - a.review_count)[0];
+      const GY = GCS().filter(r => r.iso3 === K.iso3).sort((a, b) => b.review_count - a.review_count)[0], yj = GY && CREF ? window.dreamGlobe.cityIdx(GY.name_en) : -1;
+      const gc = GY && (GT.dws_global_city || []).find(r => r.iso3 === K.iso3 && r.latitude != null && (r.city === GY.name_en || r.city === GY.scope.split('·')[0]));
+      const Y = GY && (yj >= 0 || gc) ? {zh: GY.scope.split('·')[0], en: GY.name_en || '', n: GY.review_count, a: GY.avg_score, h: GY.hotel_count, j: yj, lat: yj >= 0 ? CREF.lat(yj) : gc.latitude, lon: yj >= 0 ? CREF.lon(yj) : gc.longitude} : null;
+      const lay = ['ODS', 'DWD', 'DWS', 'ADS'].map(x => { const t = MAN.filter(m => m.layer === x); return [x, t.length, t.reduce((s, m) => s + m.rows, 0)]; });
+      const pct = v => (100 * v / (G.review_count || 1)).toFixed(1) + '%';
+      const S = [
+        {k: 'Global Overview', t: '全球 <em>Global</em>', s: [[fmtN(G.review_count), '条真实住宿评论 reviews'], [fmtN(ALL.length), '个国家地区有数据 countries']], src: 'country_scope · dws_country', go: () => { reset(); flyTo(22, 20, 3.4, FT); }},
+        {k: 'Continent', t: `${C.scope} <em>${CEN[C.scope]}</em>`, s: [[fmtN(C.review_count), `条评论 · 占全球 ${pct(C.review_count)}`], [f2(C.avg_score), '平均评分 avg score']], src: 'country_scope（大洲汇总）', go: () => { changeCity(C.scope); flyTo(clat, clon, 2.6, FT); }}];
+      if (K) S.push({k: 'Country', t: `${escH(K.name_zh || zhOf(K.iso3))} <em>${escH(enOf(K.iso3))}</em>`, s: [[fmtN(K.review_count), `条评论 · ${CEN[C.scope]} 第 1`], [f2(K.avg_score) + ' · ' + fmtN(K.hotel_count), '均分 · 住宿 hotels']], src: 'dws_country', go: () => { select(K.iso3); flyTo(K.latitude, K.longitude, 2.1, FT); }});
+      if (Y) S.push({k: 'City', t: `${escH(Y.zh)} <em>${escH(Y.en)}</em>`, s: [[fmtN(Y.n), `条评论 · ${escH(K.name_zh || zhOf(K.iso3))}第 1 城`], [f2(Y.a) + ' · ' + fmtN(Y.h), '均分 · 住宿 hotels']], src: 'city_scope（GeoNames 对齐）', go: () => { if (Y.j >= 0) openCity(Y.j, {noFly: true}); flyTo(Y.lat, Y.lon, 1.6, FT); }});
+      S.push({k: 'Pipeline · 数仓管道', t: 'HDFS → Hive → Spark → MySQL', s: [[lay.map(([x, n]) => `${x} ${n}`).join(' · '), `Hive 分层表 · 共 ${fmtBig(lay.reduce((s, l) => s + l[2], 0))} 行`], [fmtN(A().raw_rows) + ' → ' + fmtN(A().clean_rows), `Booking 原始 → 清洗 · Spark ${escH(A().spark_version || '')} · MySQL 核对 ${mysqlN} 表`]], src: 'manifest · audit', go: () => { reset(); flyTo(22, 20, 3.4, FT); }});
+      return S; };
+    const show = () => { const s = stops[i]; s.go();
+      box.innerHTML = `<div class="sg-demo-k"><span>${String(i + 1).padStart(2, '0')} / ${String(stops.length).padStart(2, '0')}</span>${s.k}</div><div class="sg-demo-t">${s.t}</div><div class="sg-demo-s">${s.s.map(([v, l]) => `<div><b>${v}</b><span>${l}</span></div>`).join('')}</div><div class="sg-demo-f"><code>${s.src}</code><small>Esc 退出 · Exit</small></div><i class="sg-demo-bar"></i>`;
+      box.hidden = false; box.classList.remove('in'); void box.offsetWidth; box.classList.add('in');
+      timer = setTimeout(() => { i = (i + 1) % stops.length; show(); }, i === stops.length - 1 ? 7000 : 6200); };
+    const start = () => { if (on) return; if (touring) tour(); closeDeck && !deck.hidden && closeDeck(); stops = plan(); i = 0; on = 1; st.classList.add('demo-on'); btn.setAttribute('aria-pressed', 'true'); show(); };
+    const stop = () => { if (!on) return; on = 0; clearTimeout(timer); st.classList.remove('demo-on'); btn.setAttribute('aria-pressed', 'false'); box.classList.remove('in'); box.hidden = true; idleT = performance.now(); };
+    btn.addEventListener('click', e => { e.stopPropagation(); on ? stop() : start(); });
+    document.addEventListener('keydown', e => { const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName);
+      if (on && e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); stop(); return; }
+      if (!typing && !e.metaKey && !e.ctrlKey && !e.altKey && (e.key === 'a' || e.key === 'A')) { e.preventDefault(); e.stopImmediatePropagation(); on ? stop() : start(); } }, true);
+    st.addEventListener('pointerdown', e => { if (on && !btn.contains(e.target)) stop(); }, true);
+    return {start, stop, get on() { return on; }, plan};
+  })();
+
   /* ---- v16：可选「高清卫星模式」——仅在用户点击 🛰 后联网；CesiumJS 1.146（Apache-2.0）本地 vendor 兄弟文件；
      影像：Esri World Imagery（免密钥，须署名）；地形：AWS Open Data Terrain Tiles（Terrarium，Mapzen/SRTM/GMTED 等）。默认离线 0 外部请求 ---- */
   const sat = (() => {
@@ -3661,12 +3735,12 @@ window.TourismComparison.init();
     return {open, close, toggle, go, get on() { return on; }, tilesLoaded: () => !!(w && w.scene.globe.tilesLoaded)};
   })();
   window.dreamSat = sat;
-  window.dreamGlobe = {select, compare: (a, b) => compare(a, b), flyTo, reset, openDeck, closeDeck, tour, palette, help, layer, setYear, years, openCity, cityIdx: q => CREF ? CREF.en.findIndex((e, i) => e === q || CREF.zh[i] === q) : -1, find, refN: () => refN, dbg: () => ({hd: hdState, tiles: [...tiles.values()].filter(t => t.mesh).length, ne10: !!ne10, lowQ, fail: window.__hdFail || 0})};
+  window.dreamGlobe = {demo,select, compare: (a, b) => compare(a, b), flyTo, reset, openDeck, closeDeck, tour, palette, help, layer, setYear, years, openCity, cityIdx: q => CREF ? CREF.en.findIndex((e, i) => e === q || CREF.zh[i] === q) : -1, find, refN: () => refN, dbg: () => ({hd: hdState, tiles: [...tiles.values()].filter(t => t.mesh).length, ne10: !!ne10, lowQ, fail: window.__hdFail || 0})};
   /* ---- 启动 ---- */
   targetSpikes(); paintChor(); applyLayers(); renderPanels(); resize(); canvas.style.cursor = 'grab'; applyGlobeTheme();
   const BOOT = document.getElementById('boot') && !document.body.classList.contains('boot-done');
   if (BOOT) { st.classList.add('booting'); idleT = performance.now() + 1e9; /* 加载屏在上：大屏地球先停在最终机位渲染好，等待交接 */
-    window.__stageInfo = {view: () => ({lat: camS.lat, lon: camS.lon, dist: camS.dist, fov: cam.fov}), ready: () => !!(earthMat.map && earthMat.map.image) && frame > 2,
+    window.__stageInfo = {view: () => ({lat: camS.lat, lon: camS.lon, dist: camS.dist, fov: cam.fov, layers: document.body.classList.contains('theme-day') ? null : {bpos: layer.borders ? bpos : null, chor: cv, chorOp: () => chor.material.opacity, clouds: clouds.visible}}), ready: () => !!(earthMat.map && earthMat.map.image) && frame > 2,
       reveal: () => { st.classList.remove('booting'); idleT = performance.now(); wake(); }}; wake(); }
   else if (!RM) { camS.dist = 7.5; camS.lon = -60; st.classList.add('booting'); setTimeout(() => flyTo(22, 20, 3.4, 1900), 120); setTimeout(() => st.classList.remove('booting'), 200); }
   if (city !== '全球' && isoOfZh[city]) select(isoOfZh[city], {noScope: true}); else sideGlobal();
@@ -3676,7 +3750,7 @@ window.TourismComparison.init();
 (() => {
   const boot = document.getElementById('boot');
   if (!boot || boot.dataset.done) return;
-  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, MIN = RM ? 600 : 2500, FLY = 1500, T0 = performance.now();
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, TS = +(new URLSearchParams(location.search).get('bootslow') || 1), MIN = RM ? 600 : 2500, FLY = 1500 * TS, T0 = performance.now();
   window.__bootCtl = true; window.__bootProgress && window.__bootProgress('js');
   let started = false;
   const go = () => {
@@ -3687,7 +3761,7 @@ window.TourismComparison.init();
     const fly = can ? FLY : 0;
     setTimeout(() => { S && S.reveal(); }, Math.max(0, fly - 450));      // 面板在地球就位前开始由模糊变清晰
     setTimeout(() => { document.body.classList.add('boot-done'); }, fly + 60);  // 机位重合 → 交叉淡化
-    setTimeout(() => boot.remove(), fly + 1400);
+    setTimeout(() => boot.remove(), fly + 1400 * TS);
   };
   const tick = () => {
     if (started) return;
