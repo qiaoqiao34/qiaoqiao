@@ -3700,8 +3700,9 @@ window.TourismComparison.init();
   const pickIso = e => { const p = pickLL(e); const c = p && WORLD.at(p[1], p[0]); return c ? c.id : null; };
   let hover = null, sel = null, cmp = null;
   function paintLift() { hg.clearRect(0, 0, 2048, 1024); const proj = (lon, lat) => [(lon + 180) / 360 * 2048, (90 - lat) / 180 * 1024];
-    [[cmp, '253,230,138'], [sel, '249,168,212'], [hover, '255,255,255']].forEach(([iso, rgb]) => { const c = iso && WORLD.byId[iso]; if (!c) return; hg.beginPath(); WORLD.path(hg, c, proj); hg.fillStyle = `rgba(${rgb},.22)`; hg.fill('evenodd');
-      hg.shadowColor = `rgba(${rgb},1)`; hg.shadowBlur = 14; hg.strokeStyle = `rgba(${rgb},.95)`; hg.lineWidth = 3.2; hg.stroke(); hg.shadowBlur = 0; }); htex.needsUpdate = true; wake(); }
+    const grp = iso => ({CHN: ['CHN', 'TWN', 'HKG', 'MAC'], TWN: ['CHN', 'TWN', 'HKG', 'MAC'], HKG: ['CHN', 'TWN', 'HKG', 'MAC'], MAC: ['CHN', 'TWN', 'HKG', 'MAC']}[iso] || (iso ? [iso] : []));
+    [[cmp, '253,230,138'], [sel, '249,168,212'], [hover, '255,255,255']].forEach(([iso, rgb]) => { grp(iso).forEach(id => { const c = WORLD.byId[id]; if (!c) return; hg.beginPath(); WORLD.path(hg, c, proj); hg.fillStyle = `rgba(${rgb},.22)`; hg.fill('evenodd');
+      hg.shadowColor = `rgba(${rgb},1)`; hg.shadowBlur = 14; hg.strokeStyle = `rgba(${rgb},.95)`; hg.lineWidth = 3.2; hg.stroke(); hg.shadowBlur = 0; }); }); htex.needsUpdate = true; wake(); }
   function setHover(iso) { if (iso === hover) return; hover = iso; canvas.style.cursor = iso ? 'pointer' : 'grab'; paintLift(); }
   // v14：城市拾取——命中点附近 2° 网格内候选，按屏幕距离 ≤10px 取最近（只在当前 LOD 已绘制的城市里找）
   const pv = new THREE.Vector3();
