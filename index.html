@@ -1183,6 +1183,164 @@ body.theme-day #stage .sg-btn.ghost{background:rgba(14,110,90,.06);border-color:
 .cmp2{table-layout:fixed;font-size:.86em}.cmp2 th:nth-child(2),.cmp2 td:nth-child(2){width:30%;font-size:.86em;color:var(--ink2)}
 .cmp2 td,.cmp2 th{overflow-wrap:anywhere;padding:.35em .15em}.cmp2 th.a,.cmp2 th.b{font-size:.95em}
 
+/* ==== Compact globe: keep the map clear, open one data sheet on demand. ====
+   JS owns .map-compact, data-panel-view and hidden/inert. Wide-screen cards
+   retain their original layout; these rules never reveal a hidden panel. */
+#stage .sg-panel-controls{display:none}
+@media (max-width:1100px){
+  #stage.map-compact{
+    --sg-edge:12px;
+    --sg-top-edge:max(12px,env(safe-area-inset-top));
+    --sg-bottom-edge:max(12px,env(safe-area-inset-bottom));
+    --sg-footer-height:82px;
+    --sg-panel-anchor:calc(var(--sg-bottom-edge) + var(--sg-footer-height) + 10px);
+    --sg-controls-height:50px;
+    --sg-sheet-floor:calc(var(--sg-panel-anchor) + var(--sg-controls-height) - 1px);
+    --sg-sheet-width:min(400px,calc(100% - var(--sg-edge) * 2));
+    --sg-top-clear:calc(var(--sg-top-edge) + 132px);
+    font-size:12px;
+  }
+  #stage.map-compact>.sg-top{
+    left:var(--sg-edge);right:calc(var(--sg-edge) + 354px);top:var(--sg-top-edge);
+    width:auto;max-width:none;height:62px;padding:7px 10px 7px 7px;gap:9px;z-index:10;
+  }
+  #stage.map-compact .sg-top>div{min-width:0;flex:1}
+  #stage.map-compact .sg-logo{width:36px;height:36px;border-radius:12px}
+  #stage.map-compact .sg-title{
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    overflow:hidden;font-size:11px;line-height:1.4;letter-spacing:0;
+  }
+  #stage.map-compact .sg-crumb{flex-wrap:nowrap;min-width:0;overflow-x:auto;scrollbar-width:thin;margin-top:3px;gap:3px}
+  #stage.map-compact .sg-crumb>*{flex:none}
+  #stage.map-compact .sg-crumb button{padding:1px 3px;font-size:11px;white-space:nowrap}
+  #stage.map-compact>.sg-tools{
+    top:var(--sg-top-edge);right:var(--sg-edge);left:auto;
+    width:344px;min-height:48px;padding:4px;gap:4px;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));z-index:12;
+  }
+  #stage.map-compact .sg-tools>button{width:100%;height:38px;min-width:0;padding:0;font-size:14px}
+  #stage.map-compact .sg-layers{max-height:calc(100dvh - var(--sg-top-clear) - var(--sg-footer-height));overflow-y:auto;overscroll-behavior:contain;background:var(--glass-solid)}
+  #stage.map-compact .sg-layers label{min-height:32px}
+  #stage.map-compact>.sg-search{
+    left:var(--sg-edge);right:auto;top:calc(var(--sg-top-edge) + 72px);
+    width:min(440px,calc(100% - 190px));transform:none;padding:3px;z-index:11;
+  }
+  #stage.map-compact .sg-search input{height:38px;padding:8px 10px;font-size:13px;color:var(--ink)}
+  #stage.map-compact .sg-sugg.on{max-height:min(320px,calc(100dvh - var(--sg-top-clear) - var(--sg-panel-anchor)));overflow-y:auto;overscroll-behavior:contain}
+  #stage.map-compact .sg-sugg button{min-height:40px;padding:10px;box-sizing:border-box}
+  #stage.map-compact>.sg-demo-btn{
+    top:calc(var(--sg-top-edge) + 74px);right:var(--sg-edge);bottom:auto;
+    min-height:38px;padding:7px 12px;background:var(--glass);border-color:var(--glass-line);color:var(--ink);font-size:12px;z-index:10;
+  }
+  #stage.map-compact .sg-demo-btn small{display:none}
+  #stage.map-compact>.sg-bottom{
+    left:var(--sg-edge);right:var(--sg-edge);bottom:var(--sg-bottom-edge);
+    height:var(--sg-footer-height);grid-template-columns:minmax(260px,.9fr) minmax(0,1fr);gap:10px;align-items:end;z-index:8;
+  }
+  #stage.map-compact .sg-time{width:100%;min-width:0;height:78px;padding:7px 10px;gap:4px 8px;box-sizing:border-box}
+  #stage.map-compact .sg-play{width:34px;height:34px;flex:none;line-height:34px}
+  #stage.map-compact .sg-year{min-width:0;width:0;height:32px}
+  #stage.map-compact .sg-yl{font-size:11px;min-width:4.8em}
+  #stage.map-compact .sg-legend{min-height:18px;font-size:9px;gap:5px}
+  #stage.map-compact .sg-legend i{width:34px;flex:none}
+  #stage.map-compact .sg-legend .b{min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis}
+  #stage.map-compact .sg-dock{
+    grid-column:2;width:100%;max-width:100%;min-width:0;height:52px;box-sizing:border-box;
+    justify-self:stretch;align-items:center;gap:2px;padding:4px;overflow-x:auto;overflow-y:hidden;
+    overscroll-behavior-x:contain;scrollbar-width:thin;scroll-padding-inline:6px;
+  }
+  #stage.map-compact .sg-dock button{box-sizing:border-box;min-width:36px;min-height:40px;flex:1 0 36px;padding:6px 4px;justify-content:center;font-size:12px}
+  #stage.map-compact .sg-dock button:hover{transform:none}
+  #stage.map-compact .sg-dock button:focus-visible{outline-offset:-2px}
+  #stage.map-compact>.sg-panel-controls:not([hidden]){
+    position:absolute;right:var(--sg-edge);bottom:var(--sg-panel-anchor);left:auto;
+    display:flex;align-items:center;gap:4px;width:var(--sg-sheet-width);height:var(--sg-controls-height);
+    padding:4px;box-sizing:border-box;background:var(--glass-solid);z-index:10;transition-delay:0s;
+  }
+  #stage.map-compact .sg-panel-toggle,
+  #stage.map-compact .sg-panel-tabs button{
+    appearance:none;border:0;border-radius:11px;background:transparent;color:var(--ink2);
+    font:inherit;font-size:12px;font-weight:500;line-height:1.2;min-height:40px;padding:8px 11px;cursor:pointer;
+    white-space:nowrap;transition:background .18s ease,color .18s ease;
+  }
+  #stage.map-compact .sg-panel-toggle{flex:none;color:var(--ink);font-weight:600;background:rgba(196,181,253,.12)}
+  #stage.map-compact .sg-panel-tabs:not([hidden]){display:flex;align-items:center;gap:2px;flex:1;min-width:0}
+  #stage.map-compact .sg-panel-tabs button{flex:1;min-width:0;padding-inline:6px}
+  #stage.map-compact .sg-panel-toggle:hover,
+  #stage.map-compact .sg-panel-tabs button:hover{background:rgba(196,181,253,.18);color:var(--ink)}
+  #stage.map-compact .sg-panel-tabs button[aria-selected="true"]{color:var(--acc2);background:rgba(196,181,253,.16);box-shadow:inset 0 -2px 0 var(--acc2)}
+  #stage.map-compact .sg-panel-controls button:focus-visible{outline:2px solid var(--acc2);outline-offset:-2px}
+  #stage.map-compact[data-panel-view="closed"]>.sg-panel-controls{width:auto}
+  #stage.map-compact[data-panel-view="closed"] .sg-panel-tabs{display:none}
+  #stage.map-compact:not([data-panel-view="closed"])>.sg-panel-controls{border-radius:0 0 18px 18px}
+  #stage.map-compact>.sg-kpi,
+  #stage.map-compact>.sg-side,
+  #stage.map-compact>.sg-src{
+    left:auto;right:var(--sg-edge);top:auto;bottom:var(--sg-sheet-floor);
+    width:var(--sg-sheet-width);min-width:0;min-height:0;
+    max-height:min(48dvh,calc(100% - var(--sg-sheet-floor) - var(--sg-top-clear)));
+    padding:18px;box-sizing:border-box;overflow:auto;overscroll-behavior:contain;
+    scrollbar-width:thin;scrollbar-color:var(--glass-line) transparent;
+    background:var(--glass-solid);border-bottom:0;border-radius:18px 18px 0 0;z-index:9;
+    transition:opacity .18s ease;transition-delay:0s;transform:none;
+  }
+  #stage.map-compact>.sg-kpi:not([hidden]),
+  #stage.map-compact>.sg-side:not([hidden]),
+  #stage.map-compact>.sg-src:not([hidden]){animation:sgCompactPanel .2s ease-out both}
+  #stage.map-compact>.sg-kpi[hidden],
+  #stage.map-compact>.sg-side[hidden],
+  #stage.map-compact>.sg-src[hidden],
+  #stage.map-compact>.sg-panel-controls[hidden],
+  #stage.map-compact .sg-panel-tabs[hidden]{display:none!important}
+  #stage.map-compact .sg-src:hover{transform:none}
+  #stage.map-compact .sg-srcs:not([hidden]){display:grid}
+  #stage.map-compact .sg-mini .sg-spark{height:3.5em}
+  #stage.map-compact .sg-ol li button{min-height:32px;line-height:1.6}
+  #stage.map-compact .sg-btn{min-height:24px;padding:10px;line-height:24px}
+  #stage.map-compact .sg-x{min-width:32px;min-height:32px;text-align:center;line-height:32px}
+  #stage.map-compact>.sg-caption{
+    bottom:calc(var(--sg-panel-anchor) + var(--sg-controls-height) + 12px);
+    max-width:min(480px,calc(100% - var(--sg-edge) * 2));width:max-content;box-sizing:border-box;
+    padding:10px 14px;font-size:12px;pointer-events:none;
+  }
+  #stage.map-compact>.sg-demo{
+    bottom:calc(var(--sg-panel-anchor) + var(--sg-controls-height) + 12px);
+    min-width:0;width:min(440px,calc(100% - var(--sg-edge) * 2));max-width:none;box-sizing:border-box;
+    max-height:calc(100% - var(--sg-sheet-floor) - var(--sg-top-clear));overflow:auto;
+  }
+  #stage.map-compact>.sg-top,#stage.map-compact>.sg-search,#stage.map-compact>.sg-tools,
+  #stage.map-compact>.sg-bottom,#stage.map-compact>.sg-demo-btn{transition-delay:0s}
+  body.theme-day #stage.map-compact .sg-panel-toggle{background:rgba(109,78,224,.08)}
+  body.theme-day #stage.map-compact .sg-panel-tabs button[aria-selected="true"]{background:rgba(109,78,224,.1)}
+  body.theme-day #stage.map-compact .sg-panel-controls button:hover{background:rgba(109,78,224,.12)}
+}
+@media (max-width:680px){
+  #stage.map-compact{
+    --sg-edge:10px;--sg-top-edge:max(10px,env(safe-area-inset-top));
+    --sg-bottom-edge:max(10px,env(safe-area-inset-bottom));--sg-footer-height:128px;
+    --sg-top-clear:calc(var(--sg-top-edge) + 224px);
+  }
+  #stage.map-compact>.sg-top{right:var(--sg-edge);height:60px}
+  #stage.map-compact .sg-title{font-size:11.5px}
+  #stage.map-compact>.sg-tools{left:var(--sg-edge);right:var(--sg-edge);top:calc(var(--sg-top-edge) + 68px);width:auto;gap:2px}
+  #stage.map-compact .sg-tools>button{height:38px}
+  #stage.map-compact>.sg-search{left:var(--sg-edge);right:var(--sg-edge);top:calc(var(--sg-top-edge) + 124px);width:auto}
+  #stage.map-compact .sg-search input{font-size:16px}
+  #stage.map-compact>.sg-demo-btn{top:calc(var(--sg-top-edge) + 176px);min-height:36px}
+  #stage.map-compact>.sg-bottom{grid-template-columns:minmax(0,1fr);grid-template-rows:70px 52px;gap:6px}
+  #stage.map-compact .sg-time{height:70px;padding:4px 10px;gap:2px 8px}
+  #stage.map-compact .sg-dock{grid-column:1;grid-row:2}
+  #stage.map-compact .sg-dock button{flex-basis:40px;min-width:40px}
+  #stage.map-compact .sg-panel-toggle{padding-inline:10px}
+  #stage.map-compact>.sg-kpi,#stage.map-compact>.sg-side,#stage.map-compact>.sg-src{padding:16px}
+  #stage.map-compact .sg-photo{margin:-16px -16px 12px}
+  #stage.map-compact .sg-caption{font-size:11px}
+}
+@keyframes sgCompactPanel{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  #stage.map-compact>.sg-kpi:not([hidden]),#stage.map-compact>.sg-side:not([hidden]),#stage.map-compact>.sg-src:not([hidden]){animation:none}
+  #stage.map-compact .sg-panel-controls,#stage.map-compact .sg-panel-controls button{transition:none}
+}
+
 </style></head><body>
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6 6-2Z"/></symbol><symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="i-visitors" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 5"/></symbol><symbol id="i-reviews" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></symbol><symbol id="i-hotels" viewBox="0 0 24 24"><path d="M5 21V3h14v18M3 21h18M10 21v-5h4v5M9 7h1M14 7h1M9 11h1M14 11h1"/></symbol><symbol id="i-methods" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9L12 3Z"/></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10M15 5h6v6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/></symbol></defs></svg><div id="boot" role="status" aria-label="页面加载中"><canvas class="boot-canvas" aria-hidden="true"></canvas><div class="boot-stars" aria-hidden="true"></div><div class="boot-orbit" aria-hidden="true"><i class="o1"></i><i class="o2"></i></div><div class="boot-inner"><div class="boot-globe" aria-hidden="true"><i class="mg"></i><i class="eq"></i></div><div class="boot-name">旅析<small>TOURISM INSIGHTS</small></div><div class="boot-tag">以真实评论，观察旅居体验</div><div class="boot-bar"><i></i></div><div class="boot-text" id="boot-text">正在加载页面…</div><div class="boot-stats"><span><b>144.9万</b>评论</span><span><b>2,670</b>城市</span><span><b>16,174</b>住宿</span></div><div class="boot-cap" aria-hidden="true">Hadoop · Hive · Spark</div></div></div><script>(function(){function h(){var b=document.getElementById("boot");if(!b||b.dataset.done)return;b.dataset.done="1";document.body.classList.add("boot-done");setTimeout(function(){var x=document.getElementById("boot");if(x)x.remove();},1500);}function m(t){var e=document.getElementById("boot-text");if(!e||!t)return;e.classList.add("swap");setTimeout(function(){e.textContent=t;e.classList.remove("swap");},180);}var P={html:.12,tex:.3,js:.42,data:.58,globe:.74,stage:.92,done:1},cur=.04;function pg(k){var v=P[k]||0,b=document.getElementById("boot");if(!b||v<=cur)return;cur=v;b.style.setProperty("--p",v);}window.__bootProgress=pg;pg("html");window.addEventListener("load",function(){setTimeout(function(){if(!window.__bootCtl)h();},800);});setTimeout(h,20000);window.__hideBoot=h;window.__bootMsg=m;})();</script><a class="skip-link" href="#overview">跳至主要内容</a>
 <aside><a class="brand" href="#overview" aria-label="旅析首页"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="brand-name">旅<span>析</span><small>TOURISM INSIGHTS</small></span></a><div class="nav-label">分析导航</div><nav aria-label="分析章节"><a href="#overview" aria-label="数据总览"><svg class="icon" aria-hidden="true"><use href="#i-overview"/></svg><span class="nav-text">数据总览</span><span class="nav-mobile-text">总览</span><span class="nav-index">01</span></a><a href="#visitors" aria-label="游客与出行"><svg class="icon" aria-hidden="true"><use href="#i-visitors"/></svg><span class="nav-text">游客与出行</span><span class="nav-mobile-text">出行</span><span class="nav-index">02</span></a><a href="#reviews" aria-label="评价洞察"><svg class="icon" aria-hidden="true"><use href="#i-reviews"/></svg><span class="nav-text">评价洞察</span><span class="nav-mobile-text">评价</span><span class="nav-index">03</span></a><a href="#hotels" aria-label="酒店探索"><svg class="icon" aria-hidden="true"><use href="#i-hotels"/></svg><span class="nav-text">酒店探索</span><span class="nav-mobile-text">酒店</span><span class="nav-index">04</span></a><a href="#methods" aria-label="数据与方法"><svg class="icon" aria-hidden="true"><use href="#i-methods"/></svg><span class="nav-text">数据与方法</span><span class="nav-mobile-text">方法</span><span class="nav-index">05</span></a></nav><div class="sidefoot"><div class="side-project"><span class="live-dot"></span><strong>个人毕业设计</strong></div><p>大数据方向 · 旅游住宿分析</p><div class="side-line"></div><p>Hadoop / Spark / Python<br>以真实评论，观察旅居体验</p><div class="side-edition">DATA EDITION &nbsp; 2015—2017</div></div></aside>
@@ -1329,6 +1487,7 @@ function subsolarPoint(d) { d = d || new Date(); const rad = Math.PI / 180, jd =
   const utcMin = d.getUTCHours() * 60 + d.getUTCMinutes() + d.getUTCSeconds() / 60; let lon = -(utcMin + eot - 720) / 4; lon = ((lon + 540) % 360) - 180; return [decl, lon]; }
 window.subsolarPoint = subsolarPoint;
 window.__storyNoSwitch = true;
+window.__responsiveStage = typeof THREE !== 'undefined' && !!(window.__EARTH_TEX || {}).day;
 /* Dashboard interactions: all calculations use the published warehouse aggregates. */
 let payload = JSON.parse(document.getElementById('project-data').textContent);
 window.__bootMsg && window.__bootMsg('数据解析完成，正在构建图表…'); window.__bootProgress && window.__bootProgress('data');
@@ -1354,6 +1513,12 @@ const WORLD = (() => {
   const ramp = t => { t = Math.max(0, Math.min(1, t)); const p = t * 3, i = Math.min(2, Math.floor(p)), f = p - i, a = STOPS[i], b = STOPS[i + 1]; return a.map((v, k) => Math.round(v + (b[k] - v) * f)); };
   const norm = (metric, v, max) => metric === 'avg_score' ? (v - 7) / 2.5 : Math.log(1 + v) / Math.log(1 + max);
   const path = (g, c, proj) => { c.r.forEach(r => { if (r.length < 6) return; for (let i = 0; i < r.length; i += 2) { const [x, y] = proj(r[i], r[i + 1]); i ? g.lineTo(x, y) : g.moveTo(x, y); } g.closePath(); }); };
+  // 地图示意点：点击辅助只作用于屏幕距离，原国家多边形保持不变。
+  const mapFeatures = [['东沙', 116.7, 20.7, 'CHN'], ['西沙 · 永兴岛', 112.3, 16.8, 'CHN'], ['中沙', 114.3, 15.1, 'CHN'], ['南沙 · 永暑礁', 114.3, 9.5, 'CHN'], ['太平岛', 114.3, 10.4, 'CHN'], ['曾母暗沙', 112.3, 3.9, 'CHN'], ['钓鱼岛', 124, 25.8, 'CHN'], ['中国澳门', 113.55, 22.2, 'MAC']].map(([name, lon, lat, iso]) => ({name, lon, lat, iso,
+    r: byId[iso]?.r.find(r => r.length >= 6 && r.length <= 12 && pip(r, lon, lat) && Math.max(...r.filter((_, i) => i % 2 === 0)) - Math.min(...r.filter((_, i) => i % 2 === 0)) < .4)})).filter(f => f.r);
+  const featureAt = (lon, lat) => mapFeatures.find(f => pip(f.r, lon, lat)) || null;
+  const nearestMapFeature = (samples, x, y, radius) => { let best = null, distance = radius;
+    samples.forEach(s => { if (!s.visible) return; const d = Math.hypot(s.x - x, s.y - y); if (Number.isFinite(d) && d <= distance) { best = s.feature; distance = d; } }); return best; };
   // 南海断续线位置示意：非官方公布坐标，不用于测量或海域界线判定。
   const drawChinaSeaBoundary = (g, proj) => {
     const u = [[118, 21.8], [116, 19.8], [112, 18.5], [110.5, 16], [109.5, 12], [109.4, 8], [110.2, 5], [112.3, 3.9], [115, 5.2], [117.7, 8.5], [118.5, 11.5], [119.2, 14.5], [120, 17.5], [121.5, 20.5]].map(p => proj(...p));
@@ -1370,7 +1535,14 @@ const WORLD = (() => {
       g.strokeStyle = r ? 'rgba(255,255,255,.75)' : 'rgba(255,255,255,.32)'; g.lineWidth = r ? 1.6 : 1; g.stroke(); });
     drawChinaSeaBoundary(g, proj);
     return cv; };
-  return {geo, byId, stats, at, ramp, norm, path, texture, drawChinaSeaBoundary, has: geo.length > 0};
+  const mapDetailBounds = [108, 2, 127, 27];
+  const detailTexture = () => { const cv = document.createElement('canvas'); cv.width = cv.height = 1024; const g = cv.getContext('2d'), [west, south, east, north] = mapDetailBounds;
+    const proj = (lon, lat) => [(lon + 180) / 360 * 2048, (90 - lat) / 180 * 1024];
+    // 仅放大纹理采样密度；坐标、线宽的地理尺度及 9+1 段位置与原绘制一致。
+    g.save(); g.scale(1024 / ((east - west) / 360 * 2048), 1024 / ((north - south) / 180 * 1024)); g.translate(-(west + 180) / 360 * 2048, -(90 - north) / 180 * 1024);
+    drawChinaSeaBoundary(g, proj); g.strokeStyle = 'rgba(255,255,255,.86)'; g.lineWidth = .6; g.lineJoin = 'round';
+    mapFeatures.forEach(f => { g.beginPath(); path(g, {r: [f.r]}, proj); g.stroke(); }); g.restore(); return cv; };
+  return {geo, byId, stats, at, ramp, norm, path, texture, drawChinaSeaBoundary, mapFeatures, featureAt, nearestMapFeature, mapDetailBounds, detailTexture, has: geo.length > 0};
 })();
 const short = (s, n = 20) => String(s).length > n ? String(s).slice(0, n - 1) + '…' : String(s);
 const CSCOPE = () => payload.tables.country_scope || [];
@@ -2247,7 +2419,7 @@ window.TourismComparison.init();
   // v4：地球纹理由构建脚本以 data URI 注入 window.__EARTH_TEX
   const params = new URLSearchParams(location.search);
   function globeIntro(replay) {
-    if (!matchMedia('(max-width: 899px)').matches || reduce || ((params.has('nointro') || location.hash.startsWith('#!')) && !replay) || typeof THREE === 'undefined' || document.querySelector('.globe-intro')) return;
+    if (window.__responsiveStage || !matchMedia('(max-width: 899px)').matches || reduce || ((params.has('nointro') || location.hash.startsWith('#!')) && !replay) || typeof THREE === 'undefined' || document.querySelector('.globe-intro')) return;
     let gl; try { const c = document.createElement('canvas'); gl = c.getContext('webgl') || c.getContext('experimental-webgl'); } catch (_) {}
     if (!gl) return;
     const TEX = window.__EARTH_TEX || {}; if (!TEX.day) return;
@@ -3486,7 +3658,6 @@ window.TourismComparison.init();
 
 /* ==== v10：单屏大屏 STAGE —— 中央 3D 地球 + 玻璃面板 + 抽屉/命令面板（表面简约，内有乾坤） ==== */
 (() => {
-  const mobile = matchMedia('(max-width: 899px)').matches;
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = id => document.getElementById(id), fmtN = v => Number(v || 0).toLocaleString('zh-CN'), f2 = v => Number(v || 0).toFixed(2);
   const escH = s => String(s ?? '').replace(/[<>&"]/g, c => ({'<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;'}[c]));
@@ -3507,7 +3678,7 @@ window.TourismComparison.init();
     let t = head.querySelector('.tbl-tag'); if (!t) { t = document.createElement('code'); t.className = 'tbl-tag'; t.title = '该图数据来自 Hive 数仓表（Spark 计算，MySQL 回读）'; head.appendChild(t); }
     const L = levelOf(city); t.textContent = (L === 'eu6' || L === 'city') ? eu : L === 'gcity' ? (id.startsWith('chart-city-') ? 'ads_city_summary' : gl.replace(/ads_country_/g, 'ads_city_')) : gl; });
   tagCharts(); window.addEventListener('dream:scope', () => setTimeout(tagCharts, 30));
-  if (mobile || typeof THREE === 'undefined' || !(window.__EARTH_TEX || {}).day) return;   // 手机：保留可滚动长页
+  if (!window.__responsiveStage) return;   // 缺少 3D 资源时保留可滚动长页；窄屏使用紧凑地图布局。
   window.__STAGE = true; document.documentElement.classList.add('stage-mode');
   window.__bootMsg && window.__bootMsg('正在渲染 3D 地球…'); window.__bootProgress && window.__bootProgress('globe');
   document.querySelector('.globe-intro')?.remove();
@@ -3521,15 +3692,36 @@ window.TourismComparison.init();
   <div class="sg-search glass"><input id="sg-q" type="search" placeholder="搜索国家 / 城市（中英文）  ⌘K" autocomplete="off" aria-label="搜索国家或城市"><div class="sg-sugg" role="listbox"></div></div>
   <div class="sg-tools glass"><button type="button" data-act="palette" title="命令面板 ⌘K">⌘K</button><button type="button" data-act="help" title="快捷键 ?">?</button><button type="button" data-act="theme" title="日间 / 夜间主题 D" aria-label="切换日间夜间主题">☀</button><button type="button" data-act="shot" title="截图 P">📷</button><button type="button" data-act="spin" title="自转 Space" aria-pressed="true">⟳</button><button type="button" data-act="reset" title="回到全球 R">⌂</button><button type="button" data-act="layers" title="图层" aria-expanded="false">◫</button><button type="button" data-act="sat" title="高清卫星模式（联网，可选）" aria-pressed="false">🛰</button>
     <div class="sg-layers glass" hidden>${LAYERS.map(([k, l, on]) => `<label><input type="checkbox" data-layer="${k}" ${on ? 'checked' : ''}> ${l}</label>`).join('')}</div></div>
-  <section class="sg-kpi glass" aria-label="关键指标"><div class="sg-scope"></div><div class="sg-kpis"></div><div class="sg-mini"></div></section>
-  <section class="sg-side glass" aria-live="polite"></section>
-  <section class="sg-src glass" aria-label="数据管道"></section>
+  <section id="sg-data-summary" class="sg-kpi glass" aria-label="关键指标"><div class="sg-scope"></div><div class="sg-kpis"></div><div class="sg-mini"></div></section>
+  <section id="sg-data-details" class="sg-side glass" aria-label="国家与城市详情" aria-live="polite"></section>
+  <section id="sg-data-source" class="sg-src glass" aria-label="数据管道"></section>
+  <div class="sg-panel-controls glass"><button type="button" class="sg-panel-toggle" aria-expanded="false" aria-controls="sg-data-summary sg-data-details sg-data-source">数据面板</button><div class="sg-panel-tabs" role="tablist" aria-label="地图数据面板" hidden>${[['summary', '概览'], ['details', '详情'], ['source', '来源']].map(([key, name]) => `<button type="button" id="sg-tab-${key}" role="tab" data-panel="${key}" aria-controls="sg-data-${key}" aria-selected="false" tabindex="-1">${name}</button>`).join('')}</div></div>
   <footer class="sg-bottom"><div class="sg-time glass"><button type="button" class="sg-play" aria-label="播放年份动画">▶</button><input type="range" class="sg-year" min="0" max="1" value="1" aria-label="年份"><b class="sg-yl">全部年份</b><div class="sg-legend"><i></i><span class="a"></span><span class="b"></span><em></em></div></div>
     <nav class="sg-dock glass" aria-label="展开更多分析">${DOCK.map(([k, i, t, s]) => `<button type="button" data-open="${k}" title="${s}"><span>${i}</span><b>${t}</b></button>`).join('')}</nav></footer>
   <div class="sg-tip glass" role="tooltip"></div><div class="sg-caption glass" hidden></div>
   <div class="sg-deck" hidden><div class="sg-deck-bg"></div><div class="sg-deck-panel glass" role="dialog" aria-modal="true" aria-label="详细分析"><div class="sg-deck-head"><b class="sg-deck-title"></b><span class="sg-deck-sub"></span><button type="button" class="sg-deck-x" aria-label="关闭 Esc">✕</button></div><div class="sg-deck-body"></div></div></div>
   <div class="sg-modal" hidden><div class="sg-deck-bg"></div><div class="sg-modal-panel glass" role="dialog" aria-modal="true"></div></div>`;
   document.body.appendChild(st);
+  // 窄屏先展示地图，数据以单个可收起面板按需展开。
+  const compactMap = matchMedia('(max-width: 1100px)'), panelToggle = st.querySelector('.sg-panel-toggle'), panelTabs = st.querySelector('.sg-panel-tabs');
+  const mapPanels = {summary: st.querySelector('.sg-kpi'), details: st.querySelector('.sg-side'), source: st.querySelector('.sg-src')};
+  let panelView = 'closed', lastPanelView = 'summary';
+  function syncMapPanels(redraw = false) { const compact = compactMap.matches, open = compact && panelView !== 'closed'; st.classList.toggle('map-compact', compact); st.dataset.panelView = compact ? panelView : 'wide';
+    panelToggle.setAttribute('aria-expanded', String(open)); panelToggle.textContent = open ? '收起面板' : '数据面板'; panelTabs.hidden = !open;
+    Object.entries(mapPanels).forEach(([key, el]) => { el.hidden = compact && key !== panelView; el.inert = el.hidden;
+      if (compact) { el.setAttribute('role', 'tabpanel'); el.setAttribute('aria-labelledby', 'sg-tab-' + key); } else { el.removeAttribute('role'); el.removeAttribute('aria-labelledby'); }
+      const tab = panelTabs.querySelector(`[data-panel="${key}"]`); tab.setAttribute('aria-selected', String(open && key === panelView)); tab.tabIndex = open && key === panelView ? 0 : -1; });
+    if (redraw) { PANELS = null; wake(); } }
+  function setMapPanel(view, focus = false) { if (view !== 'closed' && !mapPanels[view]) return; panelView = view; if (view !== 'closed') lastPanelView = view; syncMapPanels(true);
+    if (focus) (view === 'closed' ? panelToggle : panelTabs.querySelector(`[data-panel="${view}"]`)).focus({preventScroll: true}); }
+  panelToggle.addEventListener('click', () => setMapPanel(panelView === 'closed' ? lastPanelView : 'closed'));
+  panelTabs.addEventListener('click', e => { const b = e.target.closest('[data-panel]'); if (b) setMapPanel(b.dataset.panel); });
+  panelTabs.addEventListener('keydown', e => { const keys = Object.keys(mapPanels), index = keys.indexOf(panelView); let next = null;
+    if (e.key === 'ArrowRight') next = keys[(index + 1) % keys.length]; else if (e.key === 'ArrowLeft') next = keys[(index + keys.length - 1) % keys.length]; else if (e.key === 'Home') next = keys[0]; else if (e.key === 'End') next = keys[keys.length - 1];
+    if (next) { e.preventDefault(); e.stopPropagation(); setMapPanel(next, true); } });
+  st.querySelector('.sg-panel-controls').addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') e.stopPropagation(); });
+  compactMap.addEventListener('change', () => { const focusHidden = Object.values(mapPanels).some(p => p.contains(document.activeElement)) || st.querySelector('.sg-panel-controls').contains(document.activeElement); panelView = 'closed'; syncMapPanels(true); if (focusHidden) (compactMap.matches ? panelToggle : canvas).focus({preventScroll: true}); });
+  syncMapPanels();
   const main = document.querySelector('main'), deck = st.querySelector('.sg-deck'), deckBody = st.querySelector('.sg-deck-body');
   deckBody.appendChild(main); document.querySelector('body > aside')?.classList.add('stage-hidden');
   /* ---- 3. 抽屉：每个入口只显示对应章节 ---- */
@@ -3608,6 +3800,12 @@ window.TourismComparison.init();
   // 主题着色层（评论量 / 入境游客），按年份重绘
   const cv = document.createElement('canvas'); cv.width = 2048; cv.height = 1024; const cg = cv.getContext('2d'), ctex = new THREE.CanvasTexture(cv); ctex.encoding = THREE.sRGBEncoding;
   const chor = new THREE.Mesh(new THREE.SphereGeometry(R, 256, 128), drape(new THREE.MeshBasicMaterial({map: ctex, transparent: true, depthWrite: false}), .0018)); globe.add(chor);
+  // 独立的局部高清透明层，仅覆盖南海与邻近示意点；无需增加整张地球纹理的内存。
+  const seaDetails = (() => { const [west, south, east, north] = WORLD.mapDetailBounds, rad = Math.PI / 180;
+    const texture = new THREE.CanvasTexture(WORLD.detailTexture()); texture.encoding = THREE.sRGBEncoding; texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    const geometry = new THREE.SphereGeometry(R, 80, 104, (west + 180) * rad, (east - west) * rad, (90 - north) * rad, (north - south) * rad), positions = geometry.attributes.position, p = new THREE.Vector3();
+    for (let i = 0; i < positions.count; i++) { p.fromBufferAttribute(positions, i); const [lat, lon] = v2ll(p); p.setLength(R * (1 + hAt(lat, lon) * DS) + .0055); positions.setXYZ(i, p.x, p.y, p.z); }
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({map: texture, transparent: true, depthWrite: false})); mesh.renderOrder = 3; globe.add(mesh); return mesh; })();
   // 悬停“抬升”层：只画悬停/选中国家，半径更大 + 发光描边
   const hv = document.createElement('canvas'); hv.width = 2048; hv.height = 1024; const hg = hv.getContext('2d'), htex = new THREE.CanvasTexture(hv); htex.encoding = THREE.sRGBEncoding;
   const lift = new THREE.Mesh(new THREE.SphereGeometry(R, 256, 128), drape(new THREE.MeshBasicMaterial({map: htex, transparent: true, depthWrite: false}), .009)); globe.add(lift);
@@ -3646,7 +3844,7 @@ window.TourismComparison.init();
   function paintChor() { cg.clearRect(0, 0, 2048, 1024); const metric = layer.arrivals ? arrivalsAt : reviewsAt, ids = WORLD.geo.map(c => c.id), max = Math.max(1, ...ids.map(metric));
     const proj = (lon, lat) => [(lon + 180) / 360 * 2048, (90 - lat) / 180 * 1024];
     WORLD.geo.forEach(c => { const v = metric(c.id); if (!v) return; const t = Math.log(1 + v) / Math.log(1 + max), [a, b, d] = WORLD.ramp(t); cg.beginPath(); WORLD.path(cg, c, proj); cg.fillStyle = `rgba(${a},${b},${d},${.1 + .36 * t})`; cg.fill('evenodd'); });
-    if (layer.borders) WORLD.drawChinaSeaBoundary(cg, proj);
+    seaDetails.visible = layer.borders;
     ctex.needsUpdate = true; const lg = st.querySelector('.sg-legend'); lg.querySelector('.a').textContent = layer.arrivals ? '入境游客少' : '评论少'; lg.querySelector('.b').textContent = `${layer.arrivals ? '多 · 最高 ' + fmtBig(max) + ' 人次' : '多 · 最高 ' + fmtN(max) + ' 条'}`;
     lg.querySelector('em').textContent = layer.arrivals ? 'dws_tourism_country_year · 世界银行' : 'ads_country_month · 评论'; }
   const fmtBig = v => v >= 1e8 ? (v / 1e8).toFixed(2) + ' 亿' : v >= 1e4 ? (v / 1e4).toFixed(1) + ' 万' : fmtN(Math.round(v));
@@ -3710,7 +3908,16 @@ window.TourismComparison.init();
   /* ---- 6. 拾取 / 悬停 / 选择 / 对比 ---- */
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), tip = st.querySelector('.sg-tip');
   const pickLL = e => { const r = canvas.getBoundingClientRect(); ndc.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1); ray.setFromCamera(ndc, cam); const h = ray.intersectObject(earth)[0]; return h ? v2ll(globe.worldToLocal(h.point.clone())) : null; };
-  const pickIso = e => { const p = pickLL(e); const c = p && WORLD.at(p[1], p[0]); return c ? c.id : null; };
+  const pickMapHit = e => { const p = pickLL(e); if (!p) return null; const c = WORLD.at(p[1], p[0]);
+    // 精确地理命中优先，辅助热区不会覆盖附近国家或城市所在的陆地。
+    if (c) return {iso: c.id, feature: layer.borders ? WORLD.featureAt(p[1], p[0]) : null};
+    if (!layer.borders) return null;
+    const rect = canvas.getBoundingClientRect(), eye = cam.getWorldPosition(new THREE.Vector3()), origin = globe.getWorldPosition(new THREE.Vector3());
+    const samples = WORLD.mapFeatures.map(feature => { const world = surf(feature.lat, feature.lon, .0055).applyMatrix4(globe.matrixWorld), normal = world.clone().sub(origin), facing = normal.dot(eye.clone().sub(world)) > .02, screen = world.clone().project(cam);
+      return {feature, x: (screen.x + 1) / 2 * rect.width, y: (1 - screen.y) / 2 * rect.height, visible: facing && screen.z >= -1 && screen.z <= 1}; });
+    const feature = WORLD.nearestMapFeature(samples, e.clientX - rect.left, e.clientY - rect.top, e.pointerType === 'touch' ? 14 : 8);
+    return feature ? {iso: feature.iso, feature} : null; };
+  const pickIso = e => pickMapHit(e)?.iso || null;
   let hover = null, sel = null, cmp = null;
   function paintLift() { hg.clearRect(0, 0, 2048, 1024); const proj = (lon, lat) => [(lon + 180) / 360 * 2048, (90 - lat) / 180 * 1024];
     const grp = iso => ({CHN: ['CHN', 'TWN', 'HKG', 'MAC'], TWN: ['CHN', 'TWN', 'HKG', 'MAC'], HKG: ['CHN', 'TWN', 'HKG', 'MAC'], MAC: ['CHN', 'TWN', 'HKG', 'MAC']}[iso] || (iso ? [iso] : []));
@@ -3723,18 +3930,22 @@ window.TourismComparison.init();
     CREF.near(p[0], p[1], refN).forEach(i => { pv.copy(surf(CREF.lat(i), CREF.lon(i))).applyMatrix4(globe.matrixWorld).project(cam); const x = (pv.x + 1) / 2 * r.width, y = (1 - pv.y) / 2 * r.height, d = Math.hypot(x - mx, y - my) - (CREF.rev(i) ? 3 : 0);
       if (d < bd) { bd = d; best = i; } }); return best; };
   let hoverCity = -1, markCity = -1; const markEl = document.createElement('span'); markEl.className = 'sg-citymark'; st.querySelector('.sg-labels').after(markEl);
-  let hvT = 0; function hoverAt(e) { const now = performance.now(); if (now - hvT < 40) return; hvT = now; const ci = pickCity(e); hoverCity = ci;
+  let hvT = 0; function hoverAt(e) { const now = performance.now(); if (now - hvT < 40) return; hvT = now; const hit = pickMapHit(e), feature = hit?.feature, ci = feature ? -1 : pickCity(e); hoverCity = ci;
+    if (feature) { setHover(feature.iso); tip.innerHTML = `<b>${escH(feature.name)}</b><div>${escH(zhOf(feature.iso))} · 地图示意点</div><em>点击定位 · 查看所属国家/地区统计</em>`; const rc = st.getBoundingClientRect(); tip.style.transform = `translate3d(${Math.max(8, Math.min(rc.width - 250, e.clientX - rc.left + 16))}px,${Math.max(8, Math.min(rc.height - 150, e.clientY - rc.top + 14))}px,0)`; tip.classList.add('on'); return; }
     if (ci >= 0) { setHover(null); canvas.style.cursor = 'pointer'; tip.innerHTML = cityTip(ci, escH, czhOf(CREF.iso(ci))); const rc = st.getBoundingClientRect(); tip.style.transform = `translate3d(${Math.min(rc.width - 250, e.clientX + 16)}px,${Math.min(rc.height - 160, e.clientY + 14)}px,0)`; tip.classList.add('on'); return; }
-    const iso = pickIso(e); setHover(iso);
+    const iso = hit?.iso || null; setHover(iso);
     if (!iso) { tip.classList.remove('on'); return; } const r = BY[iso], t = TL[iso], y = year != null && YR[year] && YR[year][iso];
     tip.innerHTML = `<b>${escH(zhOf(iso))}</b><small>${escH(enOf(iso))}</small>` + (r ? `<div>评论 <b>${fmtN(r.review_count)}</b> 条 · 均分 <b>${f2(r.avg_score)}</b></div><div>${fmtN(r.city_count)} 城 · ${fmtN(r.hotel_count)} 家住宿</div>` : '<div class="mute">暂无评论数据</div>') +
       (year != null ? `<div>${year} 年：${y ? fmtN(y.n) + ' 条' : '暂无'}</div>` : '') + (year != null ? ((AY[year] || {})[iso] ? `<div>入境游客 ${fmtBig(AY[year][iso])} 人次 <small>(${year})</small></div>` : `<div class="mute">入境游客 ${year} 无数据</div>`) : t && t.arrivals ? `<div>入境游客 ${fmtBig(t.arrivals)} 人次 <small>(${t.arrivals_year})</small></div>` : '') + '<em>点击飞入 · 双击进入国家分析 · Shift+点击对比</em>';
     const rc = st.getBoundingClientRect(); tip.style.transform = `translate3d(${Math.min(rc.width - 250, e.clientX + 16)}px,${Math.min(rc.height - 160, e.clientY + 14)}px,0)`; tip.classList.add('on'); }
-  function clickAt(e) { const ci = pickCity(e); if (ci >= 0 && !e.shiftKey) return openCity(ci); const iso = pickIso(e); if (!iso) return; if (e.shiftKey && sel && iso !== sel) return compare(sel, iso); select(iso); }
+  function clickAt(e) { const hit = pickMapHit(e); if (hit?.feature && !e.shiftKey) { select(hit.iso, {noFly: true}); flyTo(hit.feature.lat, hit.feature.lon, 1.7); toast?.(`已定位 ${hit.feature.name} · 面板显示所属国家/地区统计`); return; }
+    const ci = pickCity(e); if (ci >= 0 && !e.shiftKey) return openCity(ci); const iso = hit?.iso; if (!iso) return; if (e.shiftKey && sel && iso !== sel) return compare(sel, iso); select(iso); }
   let syncing = false;
   function select(iso, o = {}) { if (!o.keepMark) markCity = -1; sel = iso; cmp = null; paintLift(); const c = center(iso); if (c && !o.noFly) flyTo(c[0], c[1], o.dist || (layer.arcs ? 2.7 : 2.05)); const top = drawArcs(iso); side(iso, top);
+    if (compactMap.matches && !o.noScope) setMapPanel('details');
     const zh = zhOf(iso); if (!o.noScope && scopeRow(zh) && city !== zh) { syncing = true; changeCity(zh); syncing = false; } window.dreamWorld?.select?.(iso); }
   function compare(a, b) { const q0 = quiet; lastSide = {k: 'cmp', a, b}; sel = a; cmp = b; if (!q0) { paintLift(); const ca = center(a), cb = center(b); if (ca && cb) { const m = ll(ca[0], ca[1]).add(ll(cb[0], cb[1])).normalize(), [la, lo] = v2ll(m); flyTo(la, lo, 2.6 + ll(ca[0], ca[1]).distanceTo(ll(cb[0], cb[1])) * .8); } drawArcs(null); }
+    if (!q0 && compactMap.matches) setMapPanel('details');
     // v25：国家对比 Compare（评论 · 分项 · 入境 · 交通；跟随时间轴；缺失 —）
     const A = BY[a] || {}, B = BY[b] || {}, ta = TL[a] || {}, tb = TL[b] || {}, rowC = (l, x, y, f, sx = '', sy = '') => { const better = x != null && y != null && x !== y ? (x > y ? 'l' : 'r') : ''; return `<tr><td class="${better === 'l' ? 'win' : ''}">${x != null ? f(x) : '—'}${sx ? `<small>${sx}</small>` : ''}</td><th>${l}</th><td class="${better === 'r' ? 'win' : ''}">${y != null ? f(y) : '—'}${sy ? `<small>${sy}</small>` : ''}</td></tr>`; };
     const sec = t => `<tr class="sec"><th colspan="3">${t}</th></tr>`;
@@ -3808,7 +4019,7 @@ window.TourismComparison.init();
     transportHover(sideEl);
     sideEl.querySelector('[data-cmp]')?.addEventListener('click', () => startPick(iso));
     sideEl.querySelector('[data-go]')?.addEventListener('click', () => openDeck('charts')); if (!quiet) { sideEl.classList.remove('morph'); void sideEl.offsetWidth; sideEl.classList.add('morph'); } }
-  function openCity(i, o = {}) { if (!(i >= 0)) return; markCity = i; const v = CREF.rev(i), iso = CREF.iso(i); if (v && v[3] && city !== v[3] && !o.noScope) { changeCity(v[3]); return; }
+  function openCity(i, o = {}) { if (!(i >= 0)) return; if (compactMap.matches && !o.noScope) setMapPanel('details'); markCity = i; const v = CREF.rev(i), iso = CREF.iso(i); if (v && v[3] && city !== v[3] && !o.noScope) { changeCity(v[3]); return; }
     if (!(v && v[3]) && !o.noScope) { const cz = czhOf(iso), tgt = scopeRow(cz) ? cz : contOfIso(iso); if (city !== tgt && scopeRow(tgt)) { syncing = true; changeCity(tgt); syncing = false; } }
     sel = iso; cmp = null; paintLift(); drawArcs(null); if (!o.noFly) flyTo(CREF.lat(i), CREF.lon(i), v && v[3] ? 1.5 : 1.6); citySide(i); }
   function cityPhoto(i) { const L = (window.__CITY_PHOTO || {})[i]; if (!L || !L.length) return;
@@ -4019,7 +4230,7 @@ window.TourismComparison.init();
   document.addEventListener('keydown', e => { kon = [...kon, e.key].slice(-10); if (KON.every((k, i) => kon[i] && kon[i].toLowerCase() === k.toLowerCase())) { kon = []; egg(); }
     const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName) || document.activeElement?.isContentEditable;
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); return palette(); }
-    if (e.key === 'Escape') { if (!modal.hidden) return closeModal(); if (!deck.hidden) return closeDeck(); if (cmp || sel) return reset(); }
+    if (e.key === 'Escape') { if (!modal.hidden) return closeModal(); if (!deck.hidden) return closeDeck(); if (compactMap.matches && panelView !== 'closed') return setMapPanel('closed', true); if (cmp || sel) return reset(); }
     if (typing || !deck.hidden || !modal.hidden || e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key; let used = true;
     if (k === 'ArrowLeft') vel.lon = 1.6; else if (k === 'ArrowRight') vel.lon = -1.6; else if (k === 'ArrowUp') vel.lat = 1.2; else if (k === 'ArrowDown') vel.lat = -1.2;
