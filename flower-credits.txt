@@ -1,0 +1,87 @@
+一岁一花 · 素材与许可
+
+
+=== models/LICENSE ===
+Rose flower with stem (rose-flower-with-stem.glb)
+------------------------------------------------
+Source: Innerscene Corp (innerscene.com) — "Rose flower with stem"
+License: CC0 1.0 Universal (public domain dedication)
+  https://creativecommons.org/publicdomain/zero/1.0/
+Asset copyright note (embedded in glTF):
+  Authored by Innerscene Corp (innerscene.com). Public domain: dedicated under
+  CC0 1.0 Universal. Free to use, modify and redistribute for any purpose,
+  with no credit required.
+Downloaded for craft10 hero roses in 一岁一花 bouquet (flower-ecommerce-dw).
+No modifications required for license compliance; runtime tinting is applied in
+bouquet_renderer.js for age-color variants (白/蜜桃/红).
+
+craft11: kept same Innerscene CC0 single rose; no better free face-on CC0 GLB found
+(Poly Pizza roses are CC-BY). Orientation fixed to top-into-heart (+Y normals → camera).
+
+
+=== textures/LICENSE-kraft.txt ===
+Primary albedo: ambientCG Paper001 (CC0 1.0) https://ambientcg.com/view?id=Paper001
+Tinted to kraft tan #b89268/#cfa880 + soft directional fiber strokes.
+Earlier Cardboard001 replaced (corrugation read as wood bands).
+
+
+=== vendor/three.LICENSE ===
+The MIT License
+
+Copyright © 2010-2021 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+=== assets/README.md ===
+# 鲜花图片与许可
+
+本清单合并 `credits.json` 中的 3 张素材和 `flowers/manifest.json` 中的 10 张素材，共 13 张：公开销售样本的 12 种花材各有一张按名称匹配的示意照片，另有一张花束照片。两份 JSON 保留各自的来源、下载地址、作者、许可版本和用途字段；`build_dashboard.py` 合并后将图片嵌入离线页面。
+
+照片仅用于花材视觉示意，不是销售数据集的商品实拍，与模拟销售记录不存在逐笔对应关系。驾驶舱、花材缩略图和图片查看器复用这些素材。用户导入的其他花材名称没有匹配素材时，界面提示缺少照片。
+
+## 素材与署名
+
+| 对应花材 / 用途 | 本地文件 | 作者 | 许可 | 图片来源 |
+| --- | --- | --- | --- | --- |
+| 白玫瑰 | `flowers/white-rose.jpg` | Maina Tudu | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:White_Rose_flower.jpg>) |
+| 粉玫瑰 | `flowers/pink-rose.jpg` | Dinkum | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Pink_rose_perfect.jpg>) |
+| 红玫瑰 | `flowers/red-rose.jpg` | Jonson22 | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Rde%C4%8Da_vrtnica_-_Red_rose_-_Rosa.JPG>) |
+| 百合 | `lily.jpg` | Bessi | [CC0](<http://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Lilium_Candidum_(Madonna_Lily).jpg>) |
+| 芍药 | `peony.jpg` | Acabashi | [CC BY-SA 4.0](<https://creativecommons.org/licenses/by-sa/4.0>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Deep_pink_Paeonia_lactiflora_at_Copped_Hall,_Epping,_Essex,_England.jpg>) |
+| 康乃馨 | `flowers/carnation.jpg` | Dinkun Chen | [CC BY-SA 4.0](<https://creativecommons.org/licenses/by-sa/4.0>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Dianthus_caryophyllus_in_China_(6).jpg>) |
+| 满天星 | `flowers/babys-breath.jpg` | David J. Stang | [CC BY-SA 4.0](<https://creativecommons.org/licenses/by-sa/4.0>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Gypsophila_paniculata_Bristol_Fairy_2zz.jpg>) |
+| 向日葵 | `flowers/sunflower.jpg` | Pittigrilli | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Bumblebee_on_blooming_sunflower_on_sunflower_field_in_Munich._Germany,_July_2015.jpg>) |
+| 绣球花 | `flowers/hydrangea.jpg` | Rickyverywiki | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Hydrangea.macrophylia.Lago.Maggiore.jpg>) |
+| 洋桔梗 | `flowers/lisianthus.jpg` | Andrew Dunn | [CC BY-SA 2.0](<https://creativecommons.org/licenses/by-sa/2.0>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Eustoma_grandiflorum_purple_02.jpg>) |
+| 郁金香 | `flowers/tulip.jpg` | Jason Zhang | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Prince_of_Peace_Catholic_School_tulip.jpg>) |
+| 雏菊 | `flowers/daisy.jpg` | Tom Sci | [CC0](<https://creativecommons.org/publicdomain/zero/1.0/deed.en>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Bellis_perennis_209820644.jpg>) |
+| 玫瑰与康乃馨花束（通用花束） | `bouquet.jpg` | Suyash Dwivedi | [CC BY-SA 4.0](<https://creativecommons.org/licenses/by-sa/4.0>) | [Wikimedia Commons 原页面](<https://commons.wikimedia.org/wiki/File:Rose_and_carnation_flower_bouquet_01.jpg>) |
+
+许可分布：CC0 8 张、CC BY-SA 4.0 4 张、CC BY-SA 2.0 1 张。其中洋桔梗照片由 Andrew Dunn 创作，适用 CC BY-SA 2.0；不要将其误记为 CC0 或 CC BY-SA 4.0。
+
+## 展示方式与再分发
+
+- 素材采用清单所列的 Wikimedia Commons 图片或缩略图下载版本；清单记录没有进行本地像素裁切或调色。页面通过 CSS 的 `object-fit`、`object-position` 裁切预览，并可能应用明暗、饱和度、渐变叠层或圆角效果；这些效果不改写本地图片文件。
+- 图片来源查看器显示作者、原页面、许可及示意用途。将图片嵌入 HTML 不会取消原许可；分发离线页面时应同时保留署名、来源和许可信息。
+- CC BY-SA 图片的再分发及改作应遵守各自版本的署名、修改说明和相同方式共享要求。CC0 素材仍保留来源记录，便于核查。
+- 本图片清单不改变销售数据的授权：销售数据集为 CC0 模拟数据，照片分别适用表中列明的许可。
+
+完整下载地址与逐项用途见 [原有素材清单](credits.json) 和 [补充花材清单](flowers/manifest.json)。
+
